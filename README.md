@@ -49,7 +49,7 @@ Read off both sort menus and checked against the API on 2026-11-14. The API reje
 | `data/ui-filters.json` | Hand-kept: filters the Hub sidebar offers that its tags API does not list (apps, inference providers, model types). Read off the live sidebar on 2026-11-14. |
 | `docs/tasks.md` | Generated: every task with its models and datasets links and counts. |
 | `docs/filters.md` | Generated: every filter value as a link. |
-| `src/hubexplorer/cli.py` | The CLI (single file; the HF-Research-Plugin ships a copy as `scripts/hubexplorer.py`). |
+| `src/hubexplorer/cli.py` | The CLI (single file; the AI-Model-Research-Plugin ships a copy as `scripts/hubexplorer.py`). |
 | `scripts/build.py` | Rebuilds everything from the live Hub: `uv run scripts/build.py`. |
 
 ## How the URLs combine
@@ -100,7 +100,7 @@ jq -r '.tasks[] | select(.id=="any-to-any") | .models_url' data/hf-urls.json
 jq -r '.models_filters.apps[] | "\(.id)\t\(.count)\t\(.url)"' data/hf-urls.json
 ```
 
-The [HF-Research-Plugin](https://github.com/danielrosehill/HF-Research-Plugin) ships a copy of `data/` and uses it for its task-first model research.
+The [AI-Model-Research-Plugin](https://github.com/danielrosehill/AI-Model-Research-Plugin) (`ai-model-research`) ships a copy of `data/` and uses it for its task-first model research.
 
 ## Refreshing
 
