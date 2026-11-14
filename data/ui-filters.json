@@ -1,0 +1,42 @@
+{
+  "about": "Filters the huggingface.co listing pages offer that the Hub's tags-by-type API does not list (or lists under a different parameter). Read off the live sidebar of https://huggingface.co/models and https://huggingface.co/datasets in a logged-in browser on 2026-11-14. build.py checks every one live and records its result count. Add a value here when the Hub sidebar grows one.",
+  "observed": "2026-11-14",
+  "models": {
+    "apps": {
+      "note": "Sidebar links read other=<app>, but clicking one rewrites the URL to apps=<app>. Use apps=: on 2026-11-14 other=lmstudio matched 154 models (the literal tag) while apps=lmstudio matched 238,915 (every model LM Studio can run).",
+      "values": ["llama.cpp", "llama-app", "lmstudio", "jan", "drawthings", "diffusionbee", "joyfusion", "vllm", "ollama", "mlx-lm", "docker-model-runner", "lemonade", "sglang", "unsloth", "pi", "hermes-agent", "atomic-chat", "openclaw"]
+    },
+    "other": {
+      "note": "The sidebar's Other tab. Model type: base, adapter, finetune, quantized, merge. Region and deploy targets also go through other=.",
+      "values": [
+        {"id": "base", "group": "model-type"},
+        {"id": "adapter", "group": "model-type"},
+        {"id": "finetune", "group": "model-type"},
+        {"id": "quantized", "group": "model-type"},
+        {"id": "merge", "group": "model-type"},
+        {"id": "moe", "group": "architecture"},
+        {"id": "4-bit", "group": "precision"},
+        {"id": "8-bit", "group": "precision"},
+        {"id": "custom_code", "group": "misc"},
+        {"id": "eval-results", "group": "misc"},
+        {"id": "co2_eq_emissions", "group": "misc"},
+        {"id": "decision-model", "group": "misc"},
+        {"id": "endpoints_compatible", "group": "deploy"},
+        {"id": "deploy:azure", "group": "deploy"},
+        {"id": "deploy:sagemaker", "group": "deploy"},
+        {"id": "region:us", "group": "region"},
+        {"id": "region:eu", "group": "region"}
+      ]
+    },
+    "inference_provider": {
+      "note": "Union of the sidebar's provider links and INFERENCE_PROVIDERS in huggingface.js (packages/inference/src/types.ts). inference_provider=all is the 'Inference Available' toggle.",
+      "values": ["all", "baseten", "cerebras", "cohere", "deepinfra", "fal-ai", "featherless-ai", "fireworks-ai", "groq", "hf-inference", "humain-ai", "novita", "nscale", "openai", "openrouter", "ovhcloud", "publicai", "replicate", "scaleway", "together", "wavespeed", "zai-org"]
+    }
+  },
+  "datasets": {
+    "other": {
+      "note": "rl-environment sits on the sidebar's Main tab; the rest are the Other tab and come from the tags API.",
+      "values": [{"id": "rl-environment", "group": "misc"}]
+    }
+  }
+}

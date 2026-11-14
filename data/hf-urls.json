@@ -1,0 +1,3888 @@
+{
+ "schema": 1,
+ "generated": "2026-11-14T11:19:15+00:00",
+ "counts_checked": true,
+ "sources": [
+  "https://huggingface.co/api/tasks",
+  "https://huggingface.co/api/models-tags-by-type",
+  "https://huggingface.co/api/datasets-tags-by-type",
+  "data/ui-filters.json"
+ ],
+ "totals": {
+  "models": 3236096,
+  "datasets": 1129978
+ },
+ "rules": {
+  "combine": "Different parameters combine with AND. Within one parameter, comma-separated values are AND except apps and inference_provider (OR). One pipeline_tag / task_categories per URL.",
+  "encoding": "Keep ':' and ',' literal; percent-encode '<', '>' and spaces.",
+  "models": {
+   "pipeline_tag": {
+    "values": "single",
+    "doc": "Task. One per URL (the sidebar replaces it on a second click)."
+   },
+   "library": {
+    "values": "comma = AND",
+    "doc": "Library or file format: gguf, onnx, mlx, transformers, ..."
+   },
+   "language": {
+    "values": "comma = AND",
+    "doc": "ISO code, bare: language=he. Not language:he."
+   },
+   "license": {
+    "values": "comma = AND",
+    "doc": "Prefixed: license=license:mit. A bare license=mit matches almost nothing."
+   },
+   "other": {
+    "values": "comma = AND",
+    "doc": "Model type (base, finetune, quantized, merge, adapter), moe, 4-bit, eval-results, region:eu, deploy:azure, and base-model lineage tags."
+   },
+   "apps": {
+    "values": "comma = OR",
+    "doc": "Local apps that can run the model: lmstudio, ollama, llama.cpp, vllm, mlx-lm, ..."
+   },
+   "inference_provider": {
+    "values": "comma = OR",
+    "doc": "Hosted inference: groq, together, fal-ai, ... ; all = any provider (the 'Inference Available' toggle)."
+   },
+   "num_parameters": {
+    "values": "range",
+    "doc": "num_parameters=min:0,max:6B. Units K, M, B, T. Either end can be left at 0 / omitted max for open-ended."
+   },
+   "author": {
+    "values": "single",
+    "doc": "Org or user: author=openai."
+   },
+   "search": {
+    "values": "free text",
+    "doc": "Substring of the repo id: search=whisper."
+   },
+   "sort": {
+    "values": "single",
+    "doc": "trending (default), likes, downloads, created, modified."
+   }
+  },
+  "datasets": {
+   "task_categories": {
+    "values": "single",
+    "doc": "Task, prefixed: task_categories=task_categories:automatic-speech-recognition."
+   },
+   "modality": {
+    "values": "comma = AND",
+    "doc": "modality=modality:audio. audio,text = datasets with both."
+   },
+   "format": {
+    "values": "comma = AND",
+    "doc": "format=format:parquet."
+   },
+   "size_categories": {
+    "values": "single",
+    "doc": "size_categories=size_categories:1K<n<10K (URL-encode < and >)."
+   },
+   "language": {
+    "values": "comma = AND",
+    "doc": "Prefixed: language=language:he. A bare language=he matches almost nothing."
+   },
+   "license": {
+    "values": "comma = AND",
+    "doc": "license=license:cc-by-4.0."
+   },
+   "library": {
+    "values": "comma = AND",
+    "doc": "library=library:datasets, library:pandas, ..."
+   },
+   "other": {
+    "values": "comma = AND",
+    "doc": "Domain tags (synthetic, medical, legal, code, ...), rl-environment, and task_ids:<id>."
+   },
+   "benchmark": {
+    "values": "single",
+    "doc": "benchmark=benchmark:official."
+   },
+   "author": {
+    "values": "single",
+    "doc": "Org or user."
+   },
+   "search": {
+    "values": "free text",
+    "doc": "Substring of the repo id."
+   },
+   "sort": {
+    "values": "single",
+    "doc": "trending (default), likes, downloads, created, modified."
+   }
+  }
+ },
+ "tasks": [
+  {
+   "id": "audio-classification",
+   "label": "Audio Classification",
+   "category": "Audio",
+   "has_page": true,
+   "summary": "Audio classification is the task of assigning a label or class to a given audio. It can be used for recognizing which command a user is giving or the emotion of a statement, as well as identifying a speaker.",
+   "page": "https://huggingface.co/tasks/audio-classification",
+   "models_url": "https://huggingface.co/models?pipeline_tag=audio-classification",
+   "datasets_url": "https://huggingface.co/datasets?task_categories=task_categories:audio-classification",
+   "models_api": "https://huggingface.co/api/models?pipeline_tag=audio-classification&sort=trendingScore&limit=50",
+   "datasets_api": "https://huggingface.co/api/datasets?filter=task_categories:audio-classification&sort=trendingScore&limit=50",
+   "models_count": 5477,
+   "datasets_count": 2216
+  },
+  {
+   "id": "audio-to-audio",
+   "label": "Audio-to-Audio",
+   "category": "Audio",
+   "has_page": true,
+   "summary": "Audio-to-Audio is a family of tasks in which the input is an audio and the output is one or multiple generated audios. Some example tasks are speech enhancement and source separation.",
+   "page": "https://huggingface.co/tasks/audio-to-audio",
+   "models_url": "https://huggingface.co/models?pipeline_tag=audio-to-audio",
+   "datasets_url": "https://huggingface.co/datasets?task_categories=task_categories:audio-to-audio",
+   "models_api": "https://huggingface.co/api/models?pipeline_tag=audio-to-audio&sort=trendingScore&limit=50",
+   "datasets_api": "https://huggingface.co/api/datasets?filter=task_categories:audio-to-audio&sort=trendingScore&limit=50",
+   "models_count": 1871,
+   "datasets_count": 676
+  },
+  {
+   "id": "automatic-speech-recognition",
+   "label": "Automatic Speech Recognition",
+   "category": "Audio",
+   "has_page": true,
+   "summary": "Automatic Speech Recognition (ASR), also known as Speech to Text (STT), is the task of transcribing a given audio to text. It has many applications, such as voice user interfaces.",
+   "page": "https://huggingface.co/tasks/automatic-speech-recognition",
+   "models_url": "https://huggingface.co/models?pipeline_tag=automatic-speech-recognition",
+   "datasets_url": "https://huggingface.co/datasets?task_categories=task_categories:automatic-speech-recognition",
+   "models_api": "https://huggingface.co/api/models?pipeline_tag=automatic-speech-recognition&sort=trendingScore&limit=50",
+   "datasets_api": "https://huggingface.co/api/datasets?filter=task_categories:automatic-speech-recognition&sort=trendingScore&limit=50",
+   "models_count": 39636,
+   "datasets_count": 5023
+  },
+  {
+   "id": "text-to-audio",
+   "label": "Text-to-Audio",
+   "category": "Audio",
+   "has_page": false,
+   "summary": null,
+   "page": null,
+   "models_url": "https://huggingface.co/models?pipeline_tag=text-to-audio",
+   "datasets_url": "https://huggingface.co/datasets?task_categories=task_categories:text-to-audio",
+   "models_api": "https://huggingface.co/api/models?pipeline_tag=text-to-audio&sort=trendingScore&limit=50",
+   "datasets_api": "https://huggingface.co/api/datasets?filter=task_categories:text-to-audio&sort=trendingScore&limit=50",
+   "models_count": 3689,
+   "datasets_count": 440
+  },
+  {
+   "id": "text-to-speech",
+   "label": "Text-to-Speech",
+   "category": "Audio",
+   "has_page": true,
+   "summary": "Text-to-Speech (TTS) is the task of generating natural sounding speech given text input. TTS models can be extended to have a single model that generates speech for multiple speakers and multiple languages.",
+   "page": "https://huggingface.co/tasks/text-to-speech",
+   "models_url": "https://huggingface.co/models?pipeline_tag=text-to-speech",
+   "datasets_url": "https://huggingface.co/datasets?task_categories=task_categories:text-to-speech",
+   "models_api": "https://huggingface.co/api/models?pipeline_tag=text-to-speech&sort=trendingScore&limit=50",
+   "datasets_api": "https://huggingface.co/api/datasets?filter=task_categories:text-to-speech&sort=trendingScore&limit=50",
+   "models_count": 9747,
+   "datasets_count": 2874
+  },
+  {
+   "id": "voice-activity-detection",
+   "label": "Voice Activity Detection",
+   "category": "Audio",
+   "has_page": false,
+   "summary": null,
+   "page": null,
+   "models_url": "https://huggingface.co/models?pipeline_tag=voice-activity-detection",
+   "datasets_url": "https://huggingface.co/datasets?task_categories=task_categories:voice-activity-detection",
+   "models_api": "https://huggingface.co/api/models?pipeline_tag=voice-activity-detection&sort=trendingScore&limit=50",
+   "datasets_api": "https://huggingface.co/api/datasets?filter=task_categories:voice-activity-detection&sort=trendingScore&limit=50",
+   "models_count": 392,
+   "datasets_count": 127
+  },
+  {
+   "id": "any-to-any",
+   "label": "Any-to-Any",
+   "category": "Multimodal",
+   "has_page": true,
+   "summary": "Any-to-any models can understand two or more modalities and output two or more modalities.",
+   "page": "https://huggingface.co/tasks/any-to-any",
+   "models_url": "https://huggingface.co/models?pipeline_tag=any-to-any",
+   "datasets_url": "https://huggingface.co/datasets?task_categories=task_categories:any-to-any",
+   "models_api": "https://huggingface.co/api/models?pipeline_tag=any-to-any&sort=trendingScore&limit=50",
+   "datasets_api": "https://huggingface.co/api/datasets?filter=task_categories:any-to-any&sort=trendingScore&limit=50",
+   "models_count": 11963,
+   "datasets_count": 152
+  },
+  {
+   "id": "audio-text-to-text",
+   "label": "Audio-Text-to-Text",
+   "category": "Multimodal",
+   "has_page": true,
+   "summary": "Audio-text-to-text models take both an audio clip and a text prompt as input, and generate natural language text as output. These models can answer questions about spoken content, summarize meetings, analyze music, or interpret speech beyond simple transcription. They are useful for applications that combine speech understanding with reasoning or conversation.",
+   "page": "https://huggingface.co/tasks/audio-text-to-text",
+   "models_url": "https://huggingface.co/models?pipeline_tag=audio-text-to-text",
+   "datasets_url": null,
+   "models_api": "https://huggingface.co/api/models?pipeline_tag=audio-text-to-text&sort=trendingScore&limit=50",
+   "datasets_api": null,
+   "models_count": 455,
+   "datasets_count": null
+  },
+  {
+   "id": "document-question-answering",
+   "label": "Document Question Answering",
+   "category": "Multimodal",
+   "has_page": true,
+   "summary": "Document Question Answering (also known as Document Visual Question Answering) is the task of answering questions on document images. Document question answering models take a (document, question) pair as input and return an answer in natural language. Models usually rely on multi-modal features, combining text, position of words (bounding-boxes) and image.",
+   "page": "https://huggingface.co/tasks/document-question-answering",
+   "models_url": "https://huggingface.co/models?pipeline_tag=document-question-answering",
+   "datasets_url": null,
+   "models_api": "https://huggingface.co/api/models?pipeline_tag=document-question-answering&sort=trendingScore&limit=50",
+   "datasets_api": null,
+   "models_count": 250,
+   "datasets_count": null
+  },
+  {
+   "id": "image-text-to-image",
+   "label": "Image-Text-to-Image",
+   "category": "Multimodal",
+   "has_page": true,
+   "summary": "Image-text-to-image models take an image and a text prompt as input and generate a new image based on the reference image and text instructions. These models are useful for image editing, style transfer, image variations, and guided image generation tasks.",
+   "page": "https://huggingface.co/tasks/image-text-to-image",
+   "models_url": "https://huggingface.co/models?pipeline_tag=image-text-to-image",
+   "datasets_url": "https://huggingface.co/datasets?task_categories=task_categories:image-text-to-image",
+   "models_api": "https://huggingface.co/api/models?pipeline_tag=image-text-to-image&sort=trendingScore&limit=50",
+   "datasets_api": "https://huggingface.co/api/datasets?filter=task_categories:image-text-to-image&sort=trendingScore&limit=50",
+   "models_count": 1111,
+   "datasets_count": 89
+  },
+  {
+   "id": "image-text-to-text",
+   "label": "Image-Text-to-Text",
+   "category": "Multimodal",
+   "has_page": true,
+   "summary": "Image-text-to-text models take in an image and text prompt and output text. These models are also called vision-language models, or VLMs. The difference from image-to-text models is that these models take an additional text input, not restricting the model to certain use cases like image captioning, and may also be trained to accept a conversation as input.",
+   "page": "https://huggingface.co/tasks/image-text-to-text",
+   "models_url": "https://huggingface.co/models?pipeline_tag=image-text-to-text",
+   "datasets_url": "https://huggingface.co/datasets?task_categories=task_categories:image-text-to-text",
+   "models_api": "https://huggingface.co/api/models?pipeline_tag=image-text-to-text&sort=trendingScore&limit=50",
+   "datasets_api": "https://huggingface.co/api/datasets?filter=task_categories:image-text-to-text&sort=trendingScore&limit=50",
+   "models_count": 46878,
+   "datasets_count": 1459
+  },
+  {
+   "id": "image-text-to-video",
+   "label": "Image-Text-to-Video",
+   "category": "Multimodal",
+   "has_page": true,
+   "summary": "Image-text-to-video models take an reference image and a text instructions as and generate a video based on them. These models are useful for animating still images, creating dynamic content from static references, and generating videos with specific motion or transformation guidance.",
+   "page": "https://huggingface.co/tasks/image-text-to-video",
+   "models_url": "https://huggingface.co/models?pipeline_tag=image-text-to-video",
+   "datasets_url": "https://huggingface.co/datasets?task_categories=task_categories:image-text-to-video",
+   "models_api": "https://huggingface.co/api/models?pipeline_tag=image-text-to-video&sort=trendingScore&limit=50",
+   "datasets_api": "https://huggingface.co/api/datasets?filter=task_categories:image-text-to-video&sort=trendingScore&limit=50",
+   "models_count": 393,
+   "datasets_count": 23
+  },
+  {
+   "id": "video-text-to-text",
+   "label": "Video-Text-to-Text",
+   "category": "Multimodal",
+   "has_page": true,
+   "summary": "Video-text-to-text models take in a video and a text prompt and output text. These models are also called video-language models.",
+   "page": "https://huggingface.co/tasks/video-text-to-text",
+   "models_url": "https://huggingface.co/models?pipeline_tag=video-text-to-text",
+   "datasets_url": "https://huggingface.co/datasets?task_categories=task_categories:video-text-to-text",
+   "models_api": "https://huggingface.co/api/models?pipeline_tag=video-text-to-text&sort=trendingScore&limit=50",
+   "datasets_api": "https://huggingface.co/api/datasets?filter=task_categories:video-text-to-text&sort=trendingScore&limit=50",
+   "models_count": 566,
+   "datasets_count": 736
+  },
+  {
+   "id": "visual-document-retrieval",
+   "label": "Visual Document Retrieval",
+   "category": "Multimodal",
+   "has_page": true,
+   "summary": "Visual document retrieval is the task of searching for relevant image-based documents, such as PDFs. These models take a text query and multiple documents as input and return the top-most relevant documents and relevancy scores as output.",
+   "page": "https://huggingface.co/tasks/visual-document-retrieval",
+   "models_url": "https://huggingface.co/models?pipeline_tag=visual-document-retrieval",
+   "datasets_url": "https://huggingface.co/datasets?task_categories=task_categories:visual-document-retrieval",
+   "models_api": "https://huggingface.co/api/models?pipeline_tag=visual-document-retrieval&sort=trendingScore&limit=50",
+   "datasets_api": "https://huggingface.co/api/datasets?filter=task_categories:visual-document-retrieval&sort=trendingScore&limit=50",
+   "models_count": 211,
+   "datasets_count": 356
+  },
+  {
+   "id": "visual-question-answering",
+   "label": "Visual Question Answering",
+   "category": "Multimodal",
+   "has_page": true,
+   "summary": "Visual Question Answering is the task of answering open-ended questions based on an image. They output natural language responses to natural language questions.",
+   "page": "https://huggingface.co/tasks/visual-question-answering",
+   "models_url": "https://huggingface.co/models?pipeline_tag=visual-question-answering",
+   "datasets_url": "https://huggingface.co/datasets?task_categories=task_categories:visual-question-answering",
+   "models_api": "https://huggingface.co/api/models?pipeline_tag=visual-question-answering&sort=trendingScore&limit=50",
+   "datasets_api": "https://huggingface.co/api/datasets?filter=task_categories:visual-question-answering&sort=trendingScore&limit=50",
+   "models_count": 956,
+   "datasets_count": 4466
+  },
+  {
+   "id": "graph-ml",
+   "label": "Graph Machine Learning",
+   "category": "Other",
+   "has_page": false,
+   "summary": null,
+   "page": null,
+   "models_url": "https://huggingface.co/models?pipeline_tag=graph-ml",
+   "datasets_url": "https://huggingface.co/datasets?task_categories=task_categories:graph-ml",
+   "models_api": "https://huggingface.co/api/models?pipeline_tag=graph-ml&sort=trendingScore&limit=50",
+   "datasets_api": "https://huggingface.co/api/datasets?filter=task_categories:graph-ml&sort=trendingScore&limit=50",
+   "models_count": 218,
+   "datasets_count": 669
+  },
+  {
+   "id": "reinforcement-learning",
+   "label": "Reinforcement Learning",
+   "category": "Reinforcement learning",
+   "has_page": true,
+   "summary": "Reinforcement learning is the computational approach of learning from action by interacting with an environment through trial and error and receiving rewards (negative or positive) as feedback",
+   "page": "https://huggingface.co/tasks/reinforcement-learning",
+   "models_url": "https://huggingface.co/models?pipeline_tag=reinforcement-learning",
+   "datasets_url": "https://huggingface.co/datasets?task_categories=task_categories:reinforcement-learning",
+   "models_api": "https://huggingface.co/api/models?pipeline_tag=reinforcement-learning&sort=trendingScore&limit=50",
+   "datasets_api": "https://huggingface.co/api/datasets?filter=task_categories:reinforcement-learning&sort=trendingScore&limit=50",
+   "models_count": 80774,
+   "datasets_count": 1655
+  },
+  {
+   "id": "robotics",
+   "label": "Robotics",
+   "category": "Reinforcement learning",
+   "has_page": false,
+   "summary": null,
+   "page": null,
+   "models_url": "https://huggingface.co/models?pipeline_tag=robotics",
+   "datasets_url": "https://huggingface.co/datasets?task_categories=task_categories:robotics",
+   "models_api": "https://huggingface.co/api/models?pipeline_tag=robotics&sort=trendingScore&limit=50",
+   "datasets_api": "https://huggingface.co/api/datasets?filter=task_categories:robotics&sort=trendingScore&limit=50",
+   "models_count": 40591,
+   "datasets_count": 93116
+  },
+  {
+   "id": "tabular-classification",
+   "label": "Tabular Classification",
+   "category": "Tabular",
+   "has_page": true,
+   "summary": "Tabular classification is the task of classifying a target category (a group) based on set of attributes.",
+   "page": "https://huggingface.co/tasks/tabular-classification",
+   "models_url": "https://huggingface.co/models?pipeline_tag=tabular-classification",
+   "datasets_url": "https://huggingface.co/datasets?task_categories=task_categories:tabular-classification",
+   "models_api": "https://huggingface.co/api/models?pipeline_tag=tabular-classification&sort=trendingScore&limit=50",
+   "datasets_api": "https://huggingface.co/api/datasets?filter=task_categories:tabular-classification&sort=trendingScore&limit=50",
+   "models_count": 1321,
+   "datasets_count": 35656
+  },
+  {
+   "id": "tabular-regression",
+   "label": "Tabular Regression",
+   "category": "Tabular",
+   "has_page": true,
+   "summary": "Tabular regression is the task of predicting a numerical value given a set of attributes.",
+   "page": "https://huggingface.co/tasks/tabular-regression",
+   "models_url": "https://huggingface.co/models?pipeline_tag=tabular-regression",
+   "datasets_url": "https://huggingface.co/datasets?task_categories=task_categories:tabular-regression",
+   "models_api": "https://huggingface.co/api/models?pipeline_tag=tabular-regression&sort=trendingScore&limit=50",
+   "datasets_api": "https://huggingface.co/api/datasets?filter=task_categories:tabular-regression&sort=trendingScore&limit=50",
+   "models_count": 703,
+   "datasets_count": 39151
+  },
+  {
+   "id": "tabular-to-text",
+   "label": "tabular-to-text",
+   "category": "Tabular",
+   "has_page": false,
+   "summary": null,
+   "page": null,
+   "models_url": null,
+   "datasets_url": "https://huggingface.co/datasets?task_categories=task_categories:tabular-to-text",
+   "models_api": null,
+   "datasets_api": "https://huggingface.co/api/datasets?filter=task_categories:tabular-to-text&sort=trendingScore&limit=50",
+   "models_count": null,
+   "datasets_count": 86,
+   "datasets_only": true
+  },
+  {
+   "id": "time-series-forecasting",
+   "label": "Time Series Forecasting",
+   "category": "Tabular",
+   "has_page": false,
+   "summary": null,
+   "page": null,
+   "models_url": "https://huggingface.co/models?pipeline_tag=time-series-forecasting",
+   "datasets_url": "https://huggingface.co/datasets?task_categories=task_categories:time-series-forecasting",
+   "models_api": "https://huggingface.co/api/models?pipeline_tag=time-series-forecasting&sort=trendingScore&limit=50",
+   "datasets_api": "https://huggingface.co/api/datasets?filter=task_categories:time-series-forecasting&sort=trendingScore&limit=50",
+   "models_count": 1074,
+   "datasets_count": 16470
+  },
+  {
+   "id": "feature-extraction",
+   "label": "Feature Extraction",
+   "category": "Text",
+   "has_page": true,
+   "summary": "Feature extraction is the task of extracting features learnt in a model.",
+   "page": "https://huggingface.co/tasks/feature-extraction",
+   "models_url": "https://huggingface.co/models?pipeline_tag=feature-extraction",
+   "datasets_url": "https://huggingface.co/datasets?task_categories=task_categories:feature-extraction",
+   "models_api": "https://huggingface.co/api/models?pipeline_tag=feature-extraction&sort=trendingScore&limit=50",
+   "datasets_api": "https://huggingface.co/api/datasets?filter=task_categories:feature-extraction&sort=trendingScore&limit=50",
+   "models_count": 22223,
+   "datasets_count": 4560
+  },
+  {
+   "id": "fill-mask",
+   "label": "Fill-Mask",
+   "category": "Text",
+   "has_page": true,
+   "summary": "Masked language modeling is the task of masking some of the words in a sentence and predicting which words should replace those masks. These models are useful when we want to get a statistical understanding of the language in which the model is trained in.",
+   "page": "https://huggingface.co/tasks/fill-mask",
+   "models_url": "https://huggingface.co/models?pipeline_tag=fill-mask",
+   "datasets_url": "https://huggingface.co/datasets?task_categories=task_categories:fill-mask",
+   "models_api": "https://huggingface.co/api/models?pipeline_tag=fill-mask&sort=trendingScore&limit=50",
+   "datasets_api": "https://huggingface.co/api/datasets?filter=task_categories:fill-mask&sort=trendingScore&limit=50",
+   "models_count": 18554,
+   "datasets_count": 1380
+  },
+  {
+   "id": "multiple-choice",
+   "label": "multiple-choice",
+   "category": "Text",
+   "has_page": false,
+   "summary": null,
+   "page": null,
+   "models_url": null,
+   "datasets_url": "https://huggingface.co/datasets?task_categories=task_categories:multiple-choice",
+   "models_api": null,
+   "datasets_api": "https://huggingface.co/api/datasets?filter=task_categories:multiple-choice&sort=trendingScore&limit=50",
+   "models_count": null,
+   "datasets_count": 1499,
+   "datasets_only": true
+  },
+  {
+   "id": "question-answering",
+   "label": "Question Answering",
+   "category": "Text",
+   "has_page": true,
+   "summary": "Question Answering models can retrieve the answer to a question from a given text, which is useful for searching for an answer in a document. Some question answering models can generate answers without context!",
+   "page": "https://huggingface.co/tasks/question-answering",
+   "models_url": "https://huggingface.co/models?pipeline_tag=question-answering",
+   "datasets_url": "https://huggingface.co/datasets?task_categories=task_categories:question-answering",
+   "models_api": "https://huggingface.co/api/models?pipeline_tag=question-answering&sort=trendingScore&limit=50",
+   "datasets_api": "https://huggingface.co/api/datasets?filter=task_categories:question-answering&sort=trendingScore&limit=50",
+   "models_count": 14343,
+   "datasets_count": 19287
+  },
+  {
+   "id": "sentence-similarity",
+   "label": "Sentence Similarity",
+   "category": "Text",
+   "has_page": true,
+   "summary": "Sentence Similarity is the task of determining how similar two texts are. Sentence similarity models convert input texts into vectors (embeddings) that capture semantic information and calculate how close (similar) they are between them. This task is particularly useful for information retrieval and clustering/grouping.",
+   "page": "https://huggingface.co/tasks/sentence-similarity",
+   "models_url": "https://huggingface.co/models?pipeline_tag=sentence-similarity",
+   "datasets_url": "https://huggingface.co/datasets?task_categories=task_categories:sentence-similarity",
+   "models_api": "https://huggingface.co/api/models?pipeline_tag=sentence-similarity&sort=trendingScore&limit=50",
+   "datasets_api": "https://huggingface.co/api/datasets?filter=task_categories:sentence-similarity&sort=trendingScore&limit=50",
+   "models_count": 20855,
+   "datasets_count": 1593
+  },
+  {
+   "id": "summarization",
+   "label": "Summarization",
+   "category": "Text",
+   "has_page": true,
+   "summary": "Summarization is the task of producing a shorter version of a document while preserving its important information. Some models can extract text from the original input, while other models can generate entirely new text.",
+   "page": "https://huggingface.co/tasks/summarization",
+   "models_url": "https://huggingface.co/models?pipeline_tag=summarization",
+   "datasets_url": "https://huggingface.co/datasets?task_categories=task_categories:summarization",
+   "models_api": "https://huggingface.co/api/models?pipeline_tag=summarization&sort=trendingScore&limit=50",
+   "datasets_api": "https://huggingface.co/api/datasets?filter=task_categories:summarization&sort=trendingScore&limit=50",
+   "models_count": 3009,
+   "datasets_count": 3816
+  },
+  {
+   "id": "table-question-answering",
+   "label": "Table Question Answering",
+   "category": "Text",
+   "has_page": true,
+   "summary": "Table Question Answering (Table QA) is the answering a question about an information on a given table.",
+   "page": "https://huggingface.co/tasks/table-question-answering",
+   "models_url": "https://huggingface.co/models?pipeline_tag=table-question-answering",
+   "datasets_url": "https://huggingface.co/datasets?task_categories=task_categories:table-question-answering",
+   "models_api": "https://huggingface.co/api/models?pipeline_tag=table-question-answering&sort=trendingScore&limit=50",
+   "datasets_api": "https://huggingface.co/api/datasets?filter=task_categories:table-question-answering&sort=trendingScore&limit=50",
+   "models_count": 198,
+   "datasets_count": 1546
+  },
+  {
+   "id": "table-to-text",
+   "label": "table-to-text",
+   "category": "Text",
+   "has_page": false,
+   "summary": null,
+   "page": null,
+   "models_url": null,
+   "datasets_url": "https://huggingface.co/datasets?task_categories=task_categories:table-to-text",
+   "models_api": null,
+   "datasets_api": "https://huggingface.co/api/datasets?filter=task_categories:table-to-text&sort=trendingScore&limit=50",
+   "models_count": null,
+   "datasets_count": 124,
+   "datasets_only": true
+  },
+  {
+   "id": "text-classification",
+   "label": "Text Classification",
+   "category": "Text",
+   "has_page": true,
+   "summary": "Text Classification is the task of assigning a label or class to a given text. Some use cases are sentiment analysis, natural language inference, and assessing grammatical correctness.",
+   "page": "https://huggingface.co/tasks/text-classification",
+   "models_url": "https://huggingface.co/models?pipeline_tag=text-classification",
+   "datasets_url": "https://huggingface.co/datasets?task_categories=task_categories:text-classification",
+   "models_api": "https://huggingface.co/api/models?pipeline_tag=text-classification&sort=trendingScore&limit=50",
+   "datasets_api": "https://huggingface.co/api/datasets?filter=task_categories:text-classification&sort=trendingScore&limit=50",
+   "models_count": 128148,
+   "datasets_count": 21004
+  },
+  {
+   "id": "text-generation",
+   "label": "Text Generation",
+   "category": "Text",
+   "has_page": true,
+   "summary": "Generating text is the task of generating new text given another text. These models can, for example, fill in incomplete text or paraphrase.",
+   "page": "https://huggingface.co/tasks/text-generation",
+   "models_url": "https://huggingface.co/models?pipeline_tag=text-generation",
+   "datasets_url": "https://huggingface.co/datasets?task_categories=task_categories:text-generation",
+   "models_api": "https://huggingface.co/api/models?pipeline_tag=text-generation&sort=trendingScore&limit=50",
+   "datasets_api": "https://huggingface.co/api/datasets?filter=task_categories:text-generation&sort=trendingScore&limit=50",
+   "models_count": 437934,
+   "datasets_count": 39110
+  },
+  {
+   "id": "text-ranking",
+   "label": "Text Ranking",
+   "category": "Text",
+   "has_page": true,
+   "summary": "Text Ranking is the task of ranking a set of texts based on their relevance to a query. Text ranking models are trained on large datasets of queries and relevant documents to learn how to rank documents based on their relevance to the query. This task is particularly useful for search engines and information retrieval systems.",
+   "page": "https://huggingface.co/tasks/text-ranking",
+   "models_url": "https://huggingface.co/models?pipeline_tag=text-ranking",
+   "datasets_url": "https://huggingface.co/datasets?task_categories=task_categories:text-ranking",
+   "models_api": "https://huggingface.co/api/models?pipeline_tag=text-ranking&sort=trendingScore&limit=50",
+   "datasets_api": "https://huggingface.co/api/datasets?filter=task_categories:text-ranking&sort=trendingScore&limit=50",
+   "models_count": 1537,
+   "datasets_count": 357
+  },
+  {
+   "id": "text-retrieval",
+   "label": "text-retrieval",
+   "category": "Text",
+   "has_page": false,
+   "summary": null,
+   "page": null,
+   "models_url": null,
+   "datasets_url": "https://huggingface.co/datasets?task_categories=task_categories:text-retrieval",
+   "models_api": null,
+   "datasets_api": "https://huggingface.co/api/datasets?filter=task_categories:text-retrieval&sort=trendingScore&limit=50",
+   "models_count": null,
+   "datasets_count": 6139,
+   "datasets_only": true
+  },
+  {
+   "id": "token-classification",
+   "label": "Token Classification",
+   "category": "Text",
+   "has_page": true,
+   "summary": "Token classification is a natural language understanding task in which a label is assigned to some tokens in a text. Some popular token classification subtasks are Named Entity Recognition (NER) and Part-of-Speech (PoS) tagging. NER models could be trained to identify specific entities in a text, such as dates, individuals and places; and PoS tagging would identify, for example, which words in a text are verbs, nouns, and punctuation marks.",
+   "page": "https://huggingface.co/tasks/token-classification",
+   "models_url": "https://huggingface.co/models?pipeline_tag=token-classification",
+   "datasets_url": "https://huggingface.co/datasets?task_categories=task_categories:token-classification",
+   "models_api": "https://huggingface.co/api/models?pipeline_tag=token-classification&sort=trendingScore&limit=50",
+   "datasets_api": "https://huggingface.co/api/datasets?filter=task_categories:token-classification&sort=trendingScore&limit=50",
+   "models_count": 31536,
+   "datasets_count": 3794
+  },
+  {
+   "id": "translation",
+   "label": "Translation",
+   "category": "Text",
+   "has_page": true,
+   "summary": "Translation is the task of converting text from one language to another.",
+   "page": "https://huggingface.co/tasks/translation",
+   "models_url": "https://huggingface.co/models?pipeline_tag=translation",
+   "datasets_url": "https://huggingface.co/datasets?task_categories=task_categories:translation",
+   "models_api": "https://huggingface.co/api/models?pipeline_tag=translation&sort=trendingScore&limit=50",
+   "datasets_api": "https://huggingface.co/api/datasets?filter=task_categories:translation&sort=trendingScore&limit=50",
+   "models_count": 19065,
+   "datasets_count": 5884
+  },
+  {
+   "id": "zero-shot-classification",
+   "label": "Zero-Shot Classification",
+   "category": "Text",
+   "has_page": true,
+   "summary": "Zero-shot text classification is a task in natural language processing where a model is trained on a set of labeled examples but is then able to classify new examples from previously unseen classes.",
+   "page": "https://huggingface.co/tasks/zero-shot-classification",
+   "models_url": "https://huggingface.co/models?pipeline_tag=zero-shot-classification",
+   "datasets_url": "https://huggingface.co/datasets?task_categories=task_categories:zero-shot-classification",
+   "models_api": "https://huggingface.co/api/models?pipeline_tag=zero-shot-classification&sort=trendingScore&limit=50",
+   "datasets_api": "https://huggingface.co/api/datasets?filter=task_categories:zero-shot-classification&sort=trendingScore&limit=50",
+   "models_count": 984,
+   "datasets_count": 1149
+  },
+  {
+   "id": "depth-estimation",
+   "label": "Depth Estimation",
+   "category": "Vision",
+   "has_page": true,
+   "summary": "Depth estimation is the task of predicting depth of the objects present in an image.",
+   "page": "https://huggingface.co/tasks/depth-estimation",
+   "models_url": "https://huggingface.co/models?pipeline_tag=depth-estimation",
+   "datasets_url": "https://huggingface.co/datasets?task_categories=task_categories:depth-estimation",
+   "models_api": "https://huggingface.co/api/models?pipeline_tag=depth-estimation&sort=trendingScore&limit=50",
+   "datasets_api": "https://huggingface.co/api/datasets?filter=task_categories:depth-estimation&sort=trendingScore&limit=50",
+   "models_count": 798,
+   "datasets_count": 469
+  },
+  {
+   "id": "image-classification",
+   "label": "Image Classification",
+   "category": "Vision",
+   "has_page": true,
+   "summary": "Image classification is the task of assigning a label or class to an entire image. Images are expected to have only one class for each image. Image classification models take an image as input and return a prediction about which class the image belongs to.",
+   "page": "https://huggingface.co/tasks/image-classification",
+   "models_url": "https://huggingface.co/models?pipeline_tag=image-classification",
+   "datasets_url": "https://huggingface.co/datasets?task_categories=task_categories:image-classification",
+   "models_api": "https://huggingface.co/api/models?pipeline_tag=image-classification&sort=trendingScore&limit=50",
+   "datasets_api": "https://huggingface.co/api/datasets?filter=task_categories:image-classification&sort=trendingScore&limit=50",
+   "models_count": 30506,
+   "datasets_count": 6027
+  },
+  {
+   "id": "image-feature-extraction",
+   "label": "Image Feature Extraction",
+   "category": "Vision",
+   "has_page": true,
+   "summary": "Image feature extraction is the task of extracting features learnt in a computer vision model.",
+   "page": "https://huggingface.co/tasks/image-feature-extraction",
+   "models_url": "https://huggingface.co/models?pipeline_tag=image-feature-extraction",
+   "datasets_url": "https://huggingface.co/datasets?task_categories=task_categories:image-feature-extraction",
+   "models_api": "https://huggingface.co/api/models?pipeline_tag=image-feature-extraction&sort=trendingScore&limit=50",
+   "datasets_api": "https://huggingface.co/api/datasets?filter=task_categories:image-feature-extraction&sort=trendingScore&limit=50",
+   "models_count": 1796,
+   "datasets_count": 542
+  },
+  {
+   "id": "image-segmentation",
+   "label": "Image Segmentation",
+   "category": "Vision",
+   "has_page": true,
+   "summary": "Image Segmentation divides an image into segments where each pixel in the image is mapped to an object. This task has multiple variants such as instance segmentation, panoptic segmentation and semantic segmentation.",
+   "page": "https://huggingface.co/tasks/image-segmentation",
+   "models_url": "https://huggingface.co/models?pipeline_tag=image-segmentation",
+   "datasets_url": "https://huggingface.co/datasets?task_categories=task_categories:image-segmentation",
+   "models_api": "https://huggingface.co/api/models?pipeline_tag=image-segmentation&sort=trendingScore&limit=50",
+   "datasets_api": "https://huggingface.co/api/datasets?filter=task_categories:image-segmentation&sort=trendingScore&limit=50",
+   "models_count": 4033,
+   "datasets_count": 2783
+  },
+  {
+   "id": "image-to-3d",
+   "label": "Image-to-3D",
+   "category": "Vision",
+   "has_page": true,
+   "summary": "Image-to-3D models take in image input and produce 3D output.",
+   "page": "https://huggingface.co/tasks/image-to-3d",
+   "models_url": "https://huggingface.co/models?pipeline_tag=image-to-3d",
+   "datasets_url": "https://huggingface.co/datasets?task_categories=task_categories:image-to-3d",
+   "models_api": "https://huggingface.co/api/models?pipeline_tag=image-to-3d&sort=trendingScore&limit=50",
+   "datasets_api": "https://huggingface.co/api/datasets?filter=task_categories:image-to-3d&sort=trendingScore&limit=50",
+   "models_count": 961,
+   "datasets_count": 554
+  },
+  {
+   "id": "image-to-image",
+   "label": "Image-to-Image",
+   "category": "Vision",
+   "has_page": true,
+   "summary": "Image-to-image is the task of transforming an input image through a variety of possible manipulations and enhancements, such as super-resolution, image inpainting, colorization, and more.",
+   "page": "https://huggingface.co/tasks/image-to-image",
+   "models_url": "https://huggingface.co/models?pipeline_tag=image-to-image",
+   "datasets_url": "https://huggingface.co/datasets?task_categories=task_categories:image-to-image",
+   "models_api": "https://huggingface.co/api/models?pipeline_tag=image-to-image&sort=trendingScore&limit=50",
+   "datasets_api": "https://huggingface.co/api/datasets?filter=task_categories:image-to-image&sort=trendingScore&limit=50",
+   "models_count": 4542,
+   "datasets_count": 1697
+  },
+  {
+   "id": "image-to-text",
+   "label": "Image-to-Text",
+   "category": "Vision",
+   "has_page": true,
+   "summary": "Image to text models output a text from a given image. Image captioning or optical character recognition can be considered as the most common applications of image to text.",
+   "page": "https://huggingface.co/tasks/image-to-text",
+   "models_url": "https://huggingface.co/models?pipeline_tag=image-to-text",
+   "datasets_url": "https://huggingface.co/datasets?task_categories=task_categories:image-to-text",
+   "models_api": "https://huggingface.co/api/models?pipeline_tag=image-to-text&sort=trendingScore&limit=50",
+   "datasets_api": "https://huggingface.co/api/datasets?filter=task_categories:image-to-text&sort=trendingScore&limit=50",
+   "models_count": 2443,
+   "datasets_count": 5166
+  },
+  {
+   "id": "image-to-video",
+   "label": "Image-to-Video",
+   "category": "Vision",
+   "has_page": true,
+   "summary": "Image-to-video models take a still image as input and generate a video. These models can be guided by text prompts to influence the content and style of the output video.",
+   "page": "https://huggingface.co/tasks/image-to-video",
+   "models_url": "https://huggingface.co/models?pipeline_tag=image-to-video",
+   "datasets_url": "https://huggingface.co/datasets?task_categories=task_categories:image-to-video",
+   "models_api": "https://huggingface.co/api/models?pipeline_tag=image-to-video&sort=trendingScore&limit=50",
+   "datasets_api": "https://huggingface.co/api/datasets?filter=task_categories:image-to-video&sort=trendingScore&limit=50",
+   "models_count": 1974,
+   "datasets_count": 390
+  },
+  {
+   "id": "keypoint-detection",
+   "label": "Keypoint Detection",
+   "category": "Vision",
+   "has_page": true,
+   "summary": "Keypoint detection is the task of identifying meaningful distinctive points or features in an image.",
+   "page": "https://huggingface.co/tasks/keypoint-detection",
+   "models_url": "https://huggingface.co/models?pipeline_tag=keypoint-detection",
+   "datasets_url": null,
+   "models_api": "https://huggingface.co/api/models?pipeline_tag=keypoint-detection&sort=trendingScore&limit=50",
+   "datasets_api": null,
+   "models_count": 524,
+   "datasets_count": null
+  },
+  {
+   "id": "mask-generation",
+   "label": "Mask Generation",
+   "category": "Vision",
+   "has_page": true,
+   "summary": "Mask generation is the task of generating masks that identify a specific object or region of interest in a given image. Masks are often used in segmentation tasks, where they provide a precise way to isolate the object of interest for further processing or analysis.",
+   "page": "https://huggingface.co/tasks/mask-generation",
+   "models_url": "https://huggingface.co/models?pipeline_tag=mask-generation",
+   "datasets_url": "https://huggingface.co/datasets?task_categories=task_categories:mask-generation",
+   "models_api": "https://huggingface.co/api/models?pipeline_tag=mask-generation&sort=trendingScore&limit=50",
+   "datasets_api": "https://huggingface.co/api/datasets?filter=task_categories:mask-generation&sort=trendingScore&limit=50",
+   "models_count": 374,
+   "datasets_count": 93
+  },
+  {
+   "id": "object-detection",
+   "label": "Object Detection",
+   "category": "Vision",
+   "has_page": true,
+   "summary": "Object Detection models allow users to identify objects of certain defined classes. Object detection models receive an image as input and output the images with bounding boxes and labels on detected objects.",
+   "page": "https://huggingface.co/tasks/object-detection",
+   "models_url": "https://huggingface.co/models?pipeline_tag=object-detection",
+   "datasets_url": "https://huggingface.co/datasets?task_categories=task_categories:object-detection",
+   "models_api": "https://huggingface.co/api/models?pipeline_tag=object-detection&sort=trendingScore&limit=50",
+   "datasets_api": "https://huggingface.co/api/datasets?filter=task_categories:object-detection&sort=trendingScore&limit=50",
+   "models_count": 7517,
+   "datasets_count": 3738
+  },
+  {
+   "id": "text-to-3d",
+   "label": "Text-to-3D",
+   "category": "Vision",
+   "has_page": true,
+   "summary": "Text-to-3D models take in text input and produce 3D output.",
+   "page": "https://huggingface.co/tasks/text-to-3d",
+   "models_url": "https://huggingface.co/models?pipeline_tag=text-to-3d",
+   "datasets_url": "https://huggingface.co/datasets?task_categories=task_categories:text-to-3d",
+   "models_api": "https://huggingface.co/api/models?pipeline_tag=text-to-3d&sort=trendingScore&limit=50",
+   "datasets_api": "https://huggingface.co/api/datasets?filter=task_categories:text-to-3d&sort=trendingScore&limit=50",
+   "models_count": 155,
+   "datasets_count": 245
+  },
+  {
+   "id": "text-to-image",
+   "label": "Text-to-Image",
+   "category": "Vision",
+   "has_page": true,
+   "summary": "Text-to-image is the task of generating images from input text. These pipelines can also be used to modify and edit images based on text prompts.",
+   "page": "https://huggingface.co/tasks/text-to-image",
+   "models_url": "https://huggingface.co/models?pipeline_tag=text-to-image",
+   "datasets_url": "https://huggingface.co/datasets?task_categories=task_categories:text-to-image",
+   "models_api": "https://huggingface.co/api/models?pipeline_tag=text-to-image&sort=trendingScore&limit=50",
+   "datasets_api": "https://huggingface.co/api/datasets?filter=task_categories:text-to-image&sort=trendingScore&limit=50",
+   "models_count": 113758,
+   "datasets_count": 6546
+  },
+  {
+   "id": "text-to-video",
+   "label": "Text-to-Video",
+   "category": "Vision",
+   "has_page": true,
+   "summary": "Text-to-video models can be used in any application that requires generating consistent sequence of images from text. ",
+   "page": "https://huggingface.co/tasks/text-to-video",
+   "models_url": "https://huggingface.co/models?pipeline_tag=text-to-video",
+   "datasets_url": "https://huggingface.co/datasets?task_categories=task_categories:text-to-video",
+   "models_api": "https://huggingface.co/api/models?pipeline_tag=text-to-video&sort=trendingScore&limit=50",
+   "datasets_api": "https://huggingface.co/api/datasets?filter=task_categories:text-to-video&sort=trendingScore&limit=50",
+   "models_count": 3118,
+   "datasets_count": 613
+  },
+  {
+   "id": "unconditional-image-generation",
+   "label": "Unconditional Image Generation",
+   "category": "Vision",
+   "has_page": true,
+   "summary": "Unconditional image generation is the task of generating images with no condition in any context (like a prompt text or another image). Once trained, the model will create images that resemble its training data distribution.",
+   "page": "https://huggingface.co/tasks/unconditional-image-generation",
+   "models_url": "https://huggingface.co/models?pipeline_tag=unconditional-image-generation",
+   "datasets_url": "https://huggingface.co/datasets?task_categories=task_categories:unconditional-image-generation",
+   "models_api": "https://huggingface.co/api/models?pipeline_tag=unconditional-image-generation&sort=trendingScore&limit=50",
+   "datasets_api": "https://huggingface.co/api/datasets?filter=task_categories:unconditional-image-generation&sort=trendingScore&limit=50",
+   "models_count": 2838,
+   "datasets_count": 144
+  },
+  {
+   "id": "video-classification",
+   "label": "Video Classification",
+   "category": "Vision",
+   "has_page": true,
+   "summary": "Video classification is the task of assigning a label or class to an entire video. Videos are expected to have only one class for each video. Video classification models take a video as input and return a prediction about which class the video belongs to.",
+   "page": "https://huggingface.co/tasks/video-classification",
+   "models_url": "https://huggingface.co/models?pipeline_tag=video-classification",
+   "datasets_url": "https://huggingface.co/datasets?task_categories=task_categories:video-classification",
+   "models_api": "https://huggingface.co/api/models?pipeline_tag=video-classification&sort=trendingScore&limit=50",
+   "datasets_api": "https://huggingface.co/api/datasets?filter=task_categories:video-classification&sort=trendingScore&limit=50",
+   "models_count": 2303,
+   "datasets_count": null
+  },
+  {
+   "id": "video-to-video",
+   "label": "Video-to-Video",
+   "category": "Vision",
+   "has_page": true,
+   "summary": "Video-to-video models take one or more videos as input and generate new videos as output. They can enhance quality, interpolate frames, modify styles, or create new motion dynamics, enabling creative applications, video production, and research.",
+   "page": "https://huggingface.co/tasks/video-to-video",
+   "models_url": "https://huggingface.co/models?pipeline_tag=video-to-video",
+   "datasets_url": null,
+   "models_api": "https://huggingface.co/api/models?pipeline_tag=video-to-video&sort=trendingScore&limit=50",
+   "datasets_api": null,
+   "models_count": null,
+   "datasets_count": null
+  },
+  {
+   "id": "zero-shot-image-classification",
+   "label": "Zero-Shot Image Classification",
+   "category": "Vision",
+   "has_page": true,
+   "summary": "Zero-shot image classification is the task of classifying previously unseen classes during training of a model.",
+   "page": "https://huggingface.co/tasks/zero-shot-image-classification",
+   "models_url": "https://huggingface.co/models?pipeline_tag=zero-shot-image-classification",
+   "datasets_url": "https://huggingface.co/datasets?task_categories=task_categories:zero-shot-image-classification",
+   "models_api": "https://huggingface.co/api/models?pipeline_tag=zero-shot-image-classification&sort=trendingScore&limit=50",
+   "datasets_api": "https://huggingface.co/api/datasets?filter=task_categories:zero-shot-image-classification&sort=trendingScore&limit=50",
+   "models_count": null,
+   "datasets_count": null
+  },
+  {
+   "id": "zero-shot-object-detection",
+   "label": "Zero-Shot Object Detection",
+   "category": "Vision",
+   "has_page": true,
+   "summary": "Zero-shot object detection is a computer vision task to detect objects and their classes in images, without any prior training or knowledge of the classes. Zero-shot object detection models receive an image as input, as well as a list of candidate classes, and output the bounding boxes and labels where the objects have been detected.",
+   "page": "https://huggingface.co/tasks/zero-shot-object-detection",
+   "models_url": "https://huggingface.co/models?pipeline_tag=zero-shot-object-detection",
+   "datasets_url": "https://huggingface.co/datasets?task_categories=task_categories:zero-shot-object-detection",
+   "models_api": "https://huggingface.co/api/models?pipeline_tag=zero-shot-object-detection&sort=trendingScore&limit=50",
+   "datasets_api": "https://huggingface.co/api/datasets?filter=task_categories:zero-shot-object-detection&sort=trendingScore&limit=50",
+   "models_count": null,
+   "datasets_count": null
+  }
+ ],
+ "models_filters": {
+  "library": [
+   {
+    "id": "pytorch",
+    "label": "PyTorch",
+    "param": "library",
+    "url": "https://huggingface.co/models?library=pytorch",
+    "count": 263180
+   },
+   {
+    "id": "tf",
+    "label": "TensorFlow",
+    "param": "library",
+    "url": "https://huggingface.co/models?library=tf",
+    "count": 17500
+   },
+   {
+    "id": "jax",
+    "label": "JAX",
+    "param": "library",
+    "url": "https://huggingface.co/models?library=jax",
+    "count": 12655
+   },
+   {
+    "id": "safetensors",
+    "label": "Safetensors",
+    "param": "library",
+    "url": "https://huggingface.co/models?library=safetensors",
+    "count": 1462630
+   },
+   {
+    "id": "transformers",
+    "label": "Transformers",
+    "param": "library",
+    "url": "https://huggingface.co/models?library=transformers",
+    "count": 994118
+   },
+   {
+    "id": "peft",
+    "label": "PEFT",
+    "param": "library",
+    "url": "https://huggingface.co/models?library=peft",
+    "count": 276069
+   },
+   {
+    "id": "gguf",
+    "label": "GGUF",
+    "param": "library",
+    "url": "https://huggingface.co/models?library=gguf",
+    "count": 221568
+   },
+   {
+    "id": "tensorboard",
+    "label": "TensorBoard",
+    "param": "library",
+    "url": "https://huggingface.co/models?library=tensorboard",
+    "count": 184930
+   },
+   {
+    "id": "diffusers",
+    "label": "Diffusers",
+    "param": "library",
+    "url": "https://huggingface.co/models?library=diffusers",
+    "count": 124417
+   },
+   {
+    "id": "onnx",
+    "label": "ONNX",
+    "param": "library",
+    "url": "https://huggingface.co/models?library=onnx",
+    "count": 62889
+   },
+   {
+    "id": "mlx",
+    "label": "MLX",
+    "param": "library",
+    "url": "https://huggingface.co/models?library=mlx",
+    "count": 28894
+   },
+   {
+    "id": "stable-baselines3",
+    "label": "stable-baselines3",
+    "param": "library",
+    "url": "https://huggingface.co/models?library=stable-baselines3",
+    "count": 28345
+   },
+   {
+    "id": "sentence-transformers",
+    "label": "sentence-transformers",
+    "param": "library",
+    "url": "https://huggingface.co/models?library=sentence-transformers",
+    "count": 27521
+   },
+   {
+    "id": "ml-agents",
+    "label": "ml-agents",
+    "param": "library",
+    "url": "https://huggingface.co/models?library=ml-agents",
+    "count": 13776
+   },
+   {
+    "id": "keras",
+    "label": "Keras",
+    "param": "library",
+    "url": "https://huggingface.co/models?library=keras",
+    "count": 7708
+   },
+   {
+    "id": "tf-keras",
+    "label": "TF-Keras",
+    "param": "library",
+    "url": "https://huggingface.co/models?library=tf-keras",
+    "count": 6996
+   },
+   {
+    "id": "joblib",
+    "label": "Joblib",
+    "param": "library",
+    "url": "https://huggingface.co/models?library=joblib",
+    "count": 6604
+   },
+   {
+    "id": "transformers.js",
+    "label": "Transformers.js",
+    "param": "library",
+    "url": "https://huggingface.co/models?library=transformers.js",
+    "count": 4705
+   },
+   {
+    "id": "adapter-transformers",
+    "label": "Adapters",
+    "param": "library",
+    "url": "https://huggingface.co/models?library=adapter-transformers",
+    "count": 3658
+   },
+   {
+    "id": "openvino",
+    "label": "OpenVINO",
+    "param": "library",
+    "url": "https://huggingface.co/models?library=openvino",
+    "count": 3479
+   },
+   {
+    "id": "timm",
+    "label": "timm",
+    "param": "library",
+    "url": "https://huggingface.co/models?library=timm",
+    "count": 3410
+   },
+   {
+    "id": "coreml",
+    "label": "Core ML",
+    "param": "library",
+    "url": "https://huggingface.co/models?library=coreml",
+    "count": 3105
+   },
+   {
+    "id": "setfit",
+    "label": "setfit",
+    "param": "library",
+    "url": "https://huggingface.co/models?library=setfit",
+    "count": 3048
+   },
+   {
+    "id": "sample-factory",
+    "label": "sample-factory",
+    "param": "library",
+    "url": "https://huggingface.co/models?library=sample-factory",
+    "count": 2561
+   },
+   {
+    "id": "tflite",
+    "label": "LiteRT",
+    "param": "library",
+    "url": "https://huggingface.co/models?library=tflite",
+    "count": 2466
+   },
+   {
+    "id": "nemo",
+    "label": "NeMo",
+    "param": "library",
+    "url": "https://huggingface.co/models?library=nemo",
+    "count": 2160
+   },
+   {
+    "id": "flair",
+    "label": "Flair",
+    "param": "library",
+    "url": "https://huggingface.co/models?library=flair",
+    "count": 1816
+   },
+   {
+    "id": "rust",
+    "label": "Rust",
+    "param": "library",
+    "url": "https://huggingface.co/models?library=rust",
+    "count": 1330
+   },
+   {
+    "id": "sklearn",
+    "label": "Scikit-learn",
+    "param": "library",
+    "url": "https://huggingface.co/models?library=sklearn",
+    "count": 1267
+   },
+   {
+    "id": "fastai",
+    "label": "fastai",
+    "param": "library",
+    "url": "https://huggingface.co/models?library=fastai",
+    "count": 1127
+   },
+   {
+    "id": "microduck",
+    "label": "Microduck",
+    "param": "library",
+    "url": "https://huggingface.co/models?library=microduck",
+    "count": 1124
+   },
+   {
+    "id": "espnet",
+    "label": "ESPnet",
+    "param": "library",
+    "url": "https://huggingface.co/models?library=espnet",
+    "count": 1050
+   },
+   {
+    "id": "bertopic",
+    "label": "BERTopic",
+    "param": "library",
+    "url": "https://huggingface.co/models?library=bertopic",
+    "count": 971
+   },
+   {
+    "id": "spacy",
+    "label": "spaCy",
+    "param": "library",
+    "url": "https://huggingface.co/models?library=spacy",
+    "count": 969
+   },
+   {
+    "id": "executorch",
+    "label": "ExecuTorch",
+    "param": "library",
+    "url": "https://huggingface.co/models?library=executorch",
+    "count": 917
+   },
+   {
+    "id": "fasttext",
+    "label": "fastText",
+    "param": "library",
+    "url": "https://huggingface.co/models?library=fasttext",
+    "count": 863
+   },
+   {
+    "id": "open_clip",
+    "label": "OpenCLIP",
+    "param": "library",
+    "url": "https://huggingface.co/models?library=open_clip",
+    "count": 856
+   },
+   {
+    "id": "keras-hub",
+    "label": "KerasHub",
+    "param": "library",
+    "url": "https://huggingface.co/models?library=keras-hub",
+    "count": 517
+   },
+   {
+    "id": "speechbrain",
+    "label": "speechbrain",
+    "param": "library",
+    "url": "https://huggingface.co/models?library=speechbrain",
+    "count": 361
+   },
+   {
+    "id": "asteroid",
+    "label": "Asteroid",
+    "param": "library",
+    "url": "https://huggingface.co/models?library=asteroid",
+    "count": 344
+   },
+   {
+    "id": "llamafile",
+    "label": "llamafile",
+    "param": "library",
+    "url": "https://huggingface.co/models?library=llamafile",
+    "count": 301
+   },
+   {
+    "id": "allennlp",
+    "label": "AllenNLP",
+    "param": "library",
+    "url": "https://huggingface.co/models?library=allennlp",
+    "count": 297
+   },
+   {
+    "id": "paddlepaddle",
+    "label": "PaddlePaddle",
+    "param": "library",
+    "url": "https://huggingface.co/models?library=paddlepaddle",
+    "count": 265
+   },
+   {
+    "id": "PaddleOCR",
+    "label": "PaddleOCR",
+    "param": "library",
+    "url": "https://huggingface.co/models?library=PaddleOCR",
+    "count": 257
+   },
+   {
+    "id": "fairseq",
+    "label": "Fairseq",
+    "param": "library",
+    "url": "https://huggingface.co/models?library=fairseq",
+    "count": 249
+   },
+   {
+    "id": "stanza",
+    "label": "Stanza",
+    "param": "library",
+    "url": "https://huggingface.co/models?library=stanza",
+    "count": 150
+   },
+   {
+    "id": "pyannote-audio",
+    "label": "pyannote.audio",
+    "param": "library",
+    "url": "https://huggingface.co/models?library=pyannote-audio",
+    "count": 123
+   },
+   {
+    "id": "optimum_habana",
+    "label": "Habana",
+    "param": "library",
+    "url": "https://huggingface.co/models?library=optimum_habana",
+    "count": 108
+   },
+   {
+    "id": "span-marker",
+    "label": "SpanMarker",
+    "param": "library",
+    "url": "https://huggingface.co/models?library=span-marker",
+    "count": 96
+   },
+   {
+    "id": "unity-sentis",
+    "label": "unity-sentis",
+    "param": "library",
+    "url": "https://huggingface.co/models?library=unity-sentis",
+    "count": 91
+   },
+   {
+    "id": "optimum_graphcore",
+    "label": "Graphcore",
+    "param": "library",
+    "url": "https://huggingface.co/models?library=optimum_graphcore",
+    "count": 85
+   },
+   {
+    "id": "paddlenlp",
+    "label": "paddlenlp",
+    "param": "library",
+    "url": "https://huggingface.co/models?library=paddlenlp",
+    "count": 60
+   },
+   {
+    "id": "dduf",
+    "label": "DDUF",
+    "param": "library",
+    "url": "https://huggingface.co/models?library=dduf",
+    "count": 15
+   },
+   {
+    "id": "asimov",
+    "label": "Asimov",
+    "param": "library",
+    "url": "https://huggingface.co/models?library=asimov",
+    "count": 10
+   },
+   {
+    "id": "univa",
+    "label": "univa",
+    "param": "library",
+    "url": "https://huggingface.co/models?library=univa",
+    "count": 1
+   }
+  ],
+  "license": [
+   {
+    "id": "license:apache-2.0",
+    "label": "apache-2.0",
+    "param": "license",
+    "url": "https://huggingface.co/models?license=license:apache-2.0",
+    "count": 593824
+   },
+   {
+    "id": "license:mit",
+    "label": "mit",
+    "param": "license",
+    "url": "https://huggingface.co/models?license=license:mit",
+    "count": 215029
+   },
+   {
+    "id": "license:other",
+    "label": "other",
+    "param": "license",
+    "url": "https://huggingface.co/models?license=license:other",
+    "count": 130784
+   },
+   {
+    "id": "license:openrail",
+    "label": "openrail",
+    "param": "license",
+    "url": "https://huggingface.co/models?license=license:openrail",
+    "count": 41854
+   },
+   {
+    "id": "license:creativeml-openrail-m",
+    "label": "creativeml-openrail-m",
+    "param": "license",
+    "url": "https://huggingface.co/models?license=license:creativeml-openrail-m",
+    "count": 33435
+   },
+   {
+    "id": "license:cc-by-nc-4.0",
+    "label": "cc-by-nc-4.0",
+    "param": "license",
+    "url": "https://huggingface.co/models?license=license:cc-by-nc-4.0",
+    "count": 25014
+   },
+   {
+    "id": "license:openrail++",
+    "label": "openrail++",
+    "param": "license",
+    "url": "https://huggingface.co/models?license=license:openrail%2B%2B",
+    "count": 17736
+   },
+   {
+    "id": "license:gemma",
+    "label": "gemma",
+    "param": "license",
+    "url": "https://huggingface.co/models?license=license:gemma",
+    "count": 16750
+   },
+   {
+    "id": "license:cc-by-4.0",
+    "label": "cc-by-4.0",
+    "param": "license",
+    "url": "https://huggingface.co/models?license=license:cc-by-4.0",
+    "count": 16593
+   },
+   {
+    "id": "license:llama2",
+    "label": "llama2",
+    "param": "license",
+    "url": "https://huggingface.co/models?license=license:llama2",
+    "count": 11154
+   },
+   {
+    "id": "license:llama3",
+    "label": "llama3",
+    "param": "license",
+    "url": "https://huggingface.co/models?license=license:llama3",
+    "count": 10714
+   },
+   {
+    "id": "license:llama3.1",
+    "label": "llama3.1",
+    "param": "license",
+    "url": "https://huggingface.co/models?license=license:llama3.1",
+    "count": 10040
+   },
+   {
+    "id": "license:llama3.2",
+    "label": "llama3.2",
+    "param": "license",
+    "url": "https://huggingface.co/models?license=license:llama3.2",
+    "count": 8859
+   },
+   {
+    "id": "license:cc-by-nc-sa-4.0",
+    "label": "cc-by-nc-sa-4.0",
+    "param": "license",
+    "url": "https://huggingface.co/models?license=license:cc-by-nc-sa-4.0",
+    "count": 6946
+   },
+   {
+    "id": "license:bsd-3-clause",
+    "label": "bsd-3-clause",
+    "param": "license",
+    "url": "https://huggingface.co/models?license=license:bsd-3-clause",
+    "count": 6396
+   },
+   {
+    "id": "license:afl-3.0",
+    "label": "afl-3.0",
+    "param": "license",
+    "url": "https://huggingface.co/models?license=license:afl-3.0",
+    "count": 4838
+   },
+   {
+    "id": "license:cc-by-sa-4.0",
+    "label": "cc-by-sa-4.0",
+    "param": "license",
+    "url": "https://huggingface.co/models?license=license:cc-by-sa-4.0",
+    "count": 4800
+   },
+   {
+    "id": "license:gpl-3.0",
+    "label": "gpl-3.0",
+    "param": "license",
+    "url": "https://huggingface.co/models?license=license:gpl-3.0",
+    "count": 4136
+   },
+   {
+    "id": "license:agpl-3.0",
+    "label": "agpl-3.0",
+    "param": "license",
+    "url": "https://huggingface.co/models?license=license:agpl-3.0",
+    "count": 3556
+   },
+   {
+    "id": "license:bigscience-bloom-rail-1.0",
+    "label": "bigscience-bloom-rail-1.0",
+    "param": "license",
+    "url": "https://huggingface.co/models?license=license:bigscience-bloom-rail-1.0",
+    "count": 3008
+   },
+   {
+    "id": "license:bigscience-openrail-m",
+    "label": "bigscience-openrail-m",
+    "param": "license",
+    "url": "https://huggingface.co/models?license=license:bigscience-openrail-m",
+    "count": 2879
+   },
+   {
+    "id": "license:artistic-2.0",
+    "label": "artistic-2.0",
+    "param": "license",
+    "url": "https://huggingface.co/models?license=license:artistic-2.0",
+    "count": 2824
+   },
+   {
+    "id": "license:llama3.3",
+    "label": "llama3.3",
+    "param": "license",
+    "url": "https://huggingface.co/models?license=license:llama3.3",
+    "count": 2718
+   },
+   {
+    "id": "license:bigcode-openrail-m",
+    "label": "bigcode-openrail-m",
+    "param": "license",
+    "url": "https://huggingface.co/models?license=license:bigcode-openrail-m",
+    "count": 2544
+   },
+   {
+    "id": "license:cc",
+    "label": "cc",
+    "param": "license",
+    "url": "https://huggingface.co/models?license=license:cc",
+    "count": 2493
+   },
+   {
+    "id": "license:cc-by-nc-nd-4.0",
+    "label": "cc-by-nc-nd-4.0",
+    "param": "license",
+    "url": "https://huggingface.co/models?license=license:cc-by-nc-nd-4.0",
+    "count": 2188
+   },
+   {
+    "id": "license:cc0-1.0",
+    "label": "cc0-1.0",
+    "param": "license",
+    "url": "https://huggingface.co/models?license=license:cc0-1.0",
+    "count": 1486
+   },
+   {
+    "id": "license:wtfpl",
+    "label": "wtfpl",
+    "param": "license",
+    "url": "https://huggingface.co/models?license=license:wtfpl",
+    "count": 1165
+   },
+   {
+    "id": "license:unlicense",
+    "label": "unlicense",
+    "param": "license",
+    "url": "https://huggingface.co/models?license=license:unlicense",
+    "count": 1146
+   },
+   {
+    "id": "license:bsd-2-clause",
+    "label": "bsd-2-clause",
+    "param": "license",
+    "url": "https://huggingface.co/models?license=license:bsd-2-clause",
+    "count": 1054
+   },
+   {
+    "id": "license:bsl-1.0",
+    "label": "bsl-1.0",
+    "param": "license",
+    "url": "https://huggingface.co/models?license=license:bsl-1.0",
+    "count": 1036
+   },
+   {
+    "id": "license:bsd",
+    "label": "bsd",
+    "param": "license",
+    "url": "https://huggingface.co/models?license=license:bsd",
+    "count": 983
+   },
+   {
+    "id": "license:llama4",
+    "label": "llama4",
+    "param": "license",
+    "url": "https://huggingface.co/models?license=license:llama4",
+    "count": 709
+   },
+   {
+    "id": "license:gpl",
+    "label": "gpl",
+    "param": "license",
+    "url": "https://huggingface.co/models?license=license:gpl",
+    "count": 610
+   },
+   {
+    "id": "license:cc-by-sa-3.0",
+    "label": "cc-by-sa-3.0",
+    "param": "license",
+    "url": "https://huggingface.co/models?license=license:cc-by-sa-3.0",
+    "count": 610
+   },
+   {
+    "id": "license:c-uda",
+    "label": "c-uda",
+    "param": "license",
+    "url": "https://huggingface.co/models?license=license:c-uda",
+    "count": 561
+   },
+   {
+    "id": "license:openmdw-1.1",
+    "label": "openmdw-1.1",
+    "param": "license",
+    "url": "https://huggingface.co/models?license=license:openmdw-1.1",
+    "count": 509
+   },
+   {
+    "id": "license:cc-by-2.0",
+    "label": "cc-by-2.0",
+    "param": "license",
+    "url": "https://huggingface.co/models?license=license:cc-by-2.0",
+    "count": 507
+   },
+   {
+    "id": "license:bsd-3-clause-clear",
+    "label": "bsd-3-clause-clear",
+    "param": "license",
+    "url": "https://huggingface.co/models?license=license:bsd-3-clause-clear",
+    "count": 506
+   },
+   {
+    "id": "license:cc-by-nc-2.0",
+    "label": "cc-by-nc-2.0",
+    "param": "license",
+    "url": "https://huggingface.co/models?license=license:cc-by-nc-2.0",
+    "count": 463
+   },
+   {
+    "id": "license:cdla-permissive-2.0",
+    "label": "cdla-permissive-2.0",
+    "param": "license",
+    "url": "https://huggingface.co/models?license=license:cdla-permissive-2.0",
+    "count": 357
+   },
+   {
+    "id": "license:cc-by-nd-4.0",
+    "label": "cc-by-nd-4.0",
+    "param": "license",
+    "url": "https://huggingface.co/models?license=license:cc-by-nd-4.0",
+    "count": 345
+   },
+   {
+    "id": "license:gpl-2.0",
+    "label": "gpl-2.0",
+    "param": "license",
+    "url": "https://huggingface.co/models?license=license:gpl-2.0",
+    "count": 333
+   },
+   {
+    "id": "license:cc-by-3.0",
+    "label": "cc-by-3.0",
+    "param": "license",
+    "url": "https://huggingface.co/models?license=license:cc-by-3.0",
+    "count": 331
+   },
+   {
+    "id": "license:cc-by-nc-3.0",
+    "label": "cc-by-nc-3.0",
+    "param": "license",
+    "url": "https://huggingface.co/models?license=license:cc-by-nc-3.0",
+    "count": 304
+   },
+   {
+    "id": "license:apple-amlr",
+    "label": "apple-amlr",
+    "param": "license",
+    "url": "https://huggingface.co/models?license=license:apple-amlr",
+    "count": null
+   },
+   {
+    "id": "license:lgpl-3.0",
+    "label": "lgpl-3.0",
+    "param": "license",
+    "url": "https://huggingface.co/models?license=license:lgpl-3.0",
+    "count": null
+   },
+   {
+    "id": "license:cc-by-2.5",
+    "label": "cc-by-2.5",
+    "param": "license",
+    "url": "https://huggingface.co/models?license=license:cc-by-2.5",
+    "count": null
+   },
+   {
+    "id": "license:mpl-2.0",
+    "label": "mpl-2.0",
+    "param": "license",
+    "url": "https://huggingface.co/models?license=license:mpl-2.0",
+    "count": null
+   },
+   {
+    "id": "license:fair-noncommercial-research-license",
+    "label": "fair-noncommercial-research-license",
+    "param": "license",
+    "url": "https://huggingface.co/models?license=license:fair-noncommercial-research-license",
+    "count": null
+   },
+   {
+    "id": "license:cc-by-nc-sa-3.0",
+    "label": "cc-by-nc-sa-3.0",
+    "param": "license",
+    "url": "https://huggingface.co/models?license=license:cc-by-nc-sa-3.0",
+    "count": null
+   },
+   {
+    "id": "license:osl-3.0",
+    "label": "osl-3.0",
+    "param": "license",
+    "url": "https://huggingface.co/models?license=license:osl-3.0",
+    "count": 197
+   },
+   {
+    "id": "license:cc-by-nc-nd-3.0",
+    "label": "cc-by-nc-nd-3.0",
+    "param": "license",
+    "url": "https://huggingface.co/models?license=license:cc-by-nc-nd-3.0",
+    "count": 191
+   },
+   {
+    "id": "license:pddl",
+    "label": "pddl",
+    "param": "license",
+    "url": "https://huggingface.co/models?license=license:pddl",
+    "count": 180
+   },
+   {
+    "id": "license:odc-by",
+    "label": "odc-by",
+    "param": "license",
+    "url": "https://huggingface.co/models?license=license:odc-by",
+    "count": 179
+   },
+   {
+    "id": "license:gfdl",
+    "label": "gfdl",
+    "param": "license",
+    "url": "https://huggingface.co/models?license=license:gfdl",
+    "count": 168
+   },
+   {
+    "id": "license:ecl-2.0",
+    "label": "ecl-2.0",
+    "param": "license",
+    "url": "https://huggingface.co/models?license=license:ecl-2.0",
+    "count": 163
+   },
+   {
+    "id": "license:cc-by-nc-sa-2.0",
+    "label": "cc-by-nc-sa-2.0",
+    "param": "license",
+    "url": "https://huggingface.co/models?license=license:cc-by-nc-sa-2.0",
+    "count": 160
+   },
+   {
+    "id": "license:ms-pl",
+    "label": "ms-pl",
+    "param": "license",
+    "url": "https://huggingface.co/models?license=license:ms-pl",
+    "count": 158
+   },
+   {
+    "id": "license:grok2-community",
+    "label": "grok2-community",
+    "param": "license",
+    "url": "https://huggingface.co/models?license=license:grok2-community",
+    "count": 149
+   },
+   {
+    "id": "license:apple-ascl",
+    "label": "apple-ascl",
+    "param": "license",
+    "url": "https://huggingface.co/models?license=license:apple-ascl",
+    "count": 139
+   },
+   {
+    "id": "license:deepfloyd-if-license",
+    "label": "deepfloyd-if-license",
+    "param": "license",
+    "url": "https://huggingface.co/models?license=license:deepfloyd-if-license",
+    "count": 132
+   },
+   {
+    "id": "license:etalab-2.0",
+    "label": "etalab-2.0",
+    "param": "license",
+    "url": "https://huggingface.co/models?license=license:etalab-2.0",
+    "count": 123
+   },
+   {
+    "id": "license:epl-2.0",
+    "label": "epl-2.0",
+    "param": "license",
+    "url": "https://huggingface.co/models?license=license:epl-2.0",
+    "count": 116
+   },
+   {
+    "id": "license:cdla-sharing-1.0",
+    "label": "cdla-sharing-1.0",
+    "param": "license",
+    "url": "https://huggingface.co/models?license=license:cdla-sharing-1.0",
+    "count": 115
+   },
+   {
+    "id": "license:eupl-1.2",
+    "label": "eupl-1.2",
+    "param": "license",
+    "url": "https://huggingface.co/models?license=license:eupl-1.2",
+    "count": 106
+   },
+   {
+    "id": "license:cdla-permissive-1.0",
+    "label": "cdla-permissive-1.0",
+    "param": "license",
+    "url": "https://huggingface.co/models?license=license:cdla-permissive-1.0",
+    "count": 92
+   },
+   {
+    "id": "license:lgpl",
+    "label": "lgpl",
+    "param": "license",
+    "url": "https://huggingface.co/models?license=license:lgpl",
+    "count": 90
+   },
+   {
+    "id": "license:odbl",
+    "label": "odbl",
+    "param": "license",
+    "url": "https://huggingface.co/models?license=license:odbl",
+    "count": 89
+   },
+   {
+    "id": "license:openmdw-1.0",
+    "label": "openmdw-1.0",
+    "param": "license",
+    "url": "https://huggingface.co/models?license=license:openmdw-1.0",
+    "count": 87
+   },
+   {
+    "id": "license:eupl-1.1",
+    "label": "eupl-1.1",
+    "param": "license",
+    "url": "https://huggingface.co/models?license=license:eupl-1.1",
+    "count": 82
+   },
+   {
+    "id": "license:lppl-1.3c",
+    "label": "lppl-1.3c",
+    "param": "license",
+    "url": "https://huggingface.co/models?license=license:lppl-1.3c",
+    "count": 81
+   },
+   {
+    "id": "license:zlib",
+    "label": "zlib",
+    "param": "license",
+    "url": "https://huggingface.co/models?license=license:zlib",
+    "count": 78
+   },
+   {
+    "id": "license:isc",
+    "label": "isc",
+    "param": "license",
+    "url": "https://huggingface.co/models?license=license:isc",
+    "count": 77
+   },
+   {
+    "id": "license:epl-1.0",
+    "label": "epl-1.0",
+    "param": "license",
+    "url": "https://huggingface.co/models?license=license:epl-1.0",
+    "count": 76
+   },
+   {
+    "id": "license:lgpl-2.1",
+    "label": "lgpl-2.1",
+    "param": "license",
+    "url": "https://huggingface.co/models?license=license:lgpl-2.1",
+    "count": 75
+   },
+   {
+    "id": "license:ncsa",
+    "label": "ncsa",
+    "param": "license",
+    "url": "https://huggingface.co/models?license=license:ncsa",
+    "count": 73
+   },
+   {
+    "id": "license:intel-research",
+    "label": "intel-research",
+    "param": "license",
+    "url": "https://huggingface.co/models?license=license:intel-research",
+    "count": 62
+   },
+   {
+    "id": "license:h-research",
+    "label": "h-research",
+    "param": "license",
+    "url": "https://huggingface.co/models?license=license:h-research",
+    "count": 60
+   },
+   {
+    "id": "license:lgpl-lr",
+    "label": "lgpl-lr",
+    "param": "license",
+    "url": "https://huggingface.co/models?license=license:lgpl-lr",
+    "count": 59
+   },
+   {
+    "id": "license:postgresql",
+    "label": "postgresql",
+    "param": "license",
+    "url": "https://huggingface.co/models?license=license:postgresql",
+    "count": 48
+   },
+   {
+    "id": "license:ofl-1.1",
+    "label": "ofl-1.1",
+    "param": "license",
+    "url": "https://huggingface.co/models?license=license:ofl-1.1",
+    "count": 32
+   }
+  ],
+  "apps": [
+   {
+    "id": "llama.cpp",
+    "label": "llama.cpp",
+    "param": "apps",
+    "url": "https://huggingface.co/models?apps=llama.cpp",
+    "count": 210565
+   },
+   {
+    "id": "llama-app",
+    "label": "llama-app",
+    "param": "apps",
+    "url": "https://huggingface.co/models?apps=llama-app",
+    "count": 17734
+   },
+   {
+    "id": "lmstudio",
+    "label": "lmstudio",
+    "param": "apps",
+    "url": "https://huggingface.co/models?apps=lmstudio",
+    "count": 238921
+   },
+   {
+    "id": "jan",
+    "label": "jan",
+    "param": "apps",
+    "url": "https://huggingface.co/models?apps=jan",
+    "count": 210565
+   },
+   {
+    "id": "drawthings",
+    "label": "drawthings",
+    "param": "apps",
+    "url": "https://huggingface.co/models?apps=drawthings",
+    "count": 105957
+   },
+   {
+    "id": "diffusionbee",
+    "label": "diffusionbee",
+    "param": "apps",
+    "url": "https://huggingface.co/models?apps=diffusionbee",
+    "count": 103676
+   },
+   {
+    "id": "joyfusion",
+    "label": "joyfusion",
+    "param": "apps",
+    "url": "https://huggingface.co/models?apps=joyfusion",
+    "count": 2
+   },
+   {
+    "id": "vllm",
+    "label": "vllm",
+    "param": "apps",
+    "url": "https://huggingface.co/models?apps=vllm",
+    "count": 425255
+   },
+   {
+    "id": "ollama",
+    "label": "ollama",
+    "param": "apps",
+    "url": "https://huggingface.co/models?apps=ollama",
+    "count": 210565
+   },
+   {
+    "id": "mlx-lm",
+    "label": "mlx-lm",
+    "param": "apps",
+    "url": "https://huggingface.co/models?apps=mlx-lm",
+    "count": 13168
+   },
+   {
+    "id": "docker-model-runner",
+    "label": "docker-model-runner",
+    "param": "apps",
+    "url": "https://huggingface.co/models?apps=docker-model-runner",
+    "count": 587669
+   },
+   {
+    "id": "lemonade",
+    "label": "lemonade",
+    "param": "apps",
+    "url": "https://huggingface.co/models?apps=lemonade",
+    "count": 210666
+   },
+   {
+    "id": "sglang",
+    "label": "sglang",
+    "param": "apps",
+    "url": "https://huggingface.co/models?apps=sglang",
+    "count": 397586
+   },
+   {
+    "id": "unsloth",
+    "label": "unsloth",
+    "param": "apps",
+    "url": "https://huggingface.co/models?apps=unsloth",
+    "count": 330838
+   },
+   {
+    "id": "pi",
+    "label": "pi",
+    "param": "apps",
+    "url": "https://huggingface.co/models?apps=pi",
+    "count": 99508
+   },
+   {
+    "id": "hermes-agent",
+    "label": "hermes-agent",
+    "param": "apps",
+    "url": "https://huggingface.co/models?apps=hermes-agent",
+    "count": 99508
+   },
+   {
+    "id": "atomic-chat",
+    "label": "atomic-chat",
+    "param": "apps",
+    "url": "https://huggingface.co/models?apps=atomic-chat",
+    "count": 234619
+   },
+   {
+    "id": "openclaw",
+    "label": "openclaw",
+    "param": "apps",
+    "url": "https://huggingface.co/models?apps=openclaw",
+    "count": 99508
+   }
+  ],
+  "inference_provider": [
+   {
+    "id": "all",
+    "label": "all",
+    "param": "inference_provider",
+    "url": "https://huggingface.co/models?inference_provider=all",
+    "count": 64637
+   },
+   {
+    "id": "baseten",
+    "label": "baseten",
+    "param": "inference_provider",
+    "url": "https://huggingface.co/models?inference_provider=baseten",
+    "count": 12
+   },
+   {
+    "id": "cerebras",
+    "label": "cerebras",
+    "param": "inference_provider",
+    "url": "https://huggingface.co/models?inference_provider=cerebras",
+    "count": 2
+   },
+   {
+    "id": "cohere",
+    "label": "cohere",
+    "param": "inference_provider",
+    "url": "https://huggingface.co/models?inference_provider=cohere",
+    "count": 16
+   },
+   {
+    "id": "deepinfra",
+    "label": "deepinfra",
+    "param": "inference_provider",
+    "url": "https://huggingface.co/models?inference_provider=deepinfra",
+    "count": 93
+   },
+   {
+    "id": "fal-ai",
+    "label": "fal-ai",
+    "param": "inference_provider",
+    "url": "https://huggingface.co/models?inference_provider=fal-ai",
+    "count": 53871
+   },
+   {
+    "id": "featherless-ai",
+    "label": "featherless-ai",
+    "param": "inference_provider",
+    "url": "https://huggingface.co/models?inference_provider=featherless-ai",
+    "count": 6692
+   },
+   {
+    "id": "fireworks-ai",
+    "label": "fireworks-ai",
+    "param": "inference_provider",
+    "url": "https://huggingface.co/models?inference_provider=fireworks-ai",
+    "count": 10
+   },
+   {
+    "id": "groq",
+    "label": "groq",
+    "param": "inference_provider",
+    "url": "https://huggingface.co/models?inference_provider=groq",
+    "count": 3
+   },
+   {
+    "id": "hf-inference",
+    "label": "hf-inference",
+    "param": "inference_provider",
+    "url": "https://huggingface.co/models?inference_provider=hf-inference",
+    "count": 1463
+   },
+   {
+    "id": "humain-ai",
+    "label": "humain-ai",
+    "param": "inference_provider",
+    "url": "https://huggingface.co/models?inference_provider=humain-ai",
+    "count": null
+   },
+   {
+    "id": "novita",
+    "label": "novita",
+    "param": "inference_provider",
+    "url": "https://huggingface.co/models?inference_provider=novita",
+    "count": 51
+   },
+   {
+    "id": "nscale",
+    "label": "nscale",
+    "param": "inference_provider",
+    "url": "https://huggingface.co/models?inference_provider=nscale",
+    "count": 3
+   },
+   {
+    "id": "openai",
+    "label": "openai",
+    "param": "inference_provider",
+    "url": "https://huggingface.co/models?inference_provider=openai",
+    "count": null
+   },
+   {
+    "id": "openrouter",
+    "label": "openrouter",
+    "param": "inference_provider",
+    "url": "https://huggingface.co/models?inference_provider=openrouter",
+    "count": 121
+   },
+   {
+    "id": "ovhcloud",
+    "label": "ovhcloud",
+    "param": "inference_provider",
+    "url": "https://huggingface.co/models?inference_provider=ovhcloud",
+    "count": 8
+   },
+   {
+    "id": "publicai",
+    "label": "publicai",
+    "param": "inference_provider",
+    "url": "https://huggingface.co/models?inference_provider=publicai",
+    "count": 9
+   },
+   {
+    "id": "replicate",
+    "label": "replicate",
+    "param": "inference_provider",
+    "url": "https://huggingface.co/models?inference_provider=replicate",
+    "count": 4
+   },
+   {
+    "id": "scaleway",
+    "label": "scaleway",
+    "param": "inference_provider",
+    "url": "https://huggingface.co/models?inference_provider=scaleway",
+    "count": 13
+   },
+   {
+    "id": "together",
+    "label": "together",
+    "param": "inference_provider",
+    "url": "https://huggingface.co/models?inference_provider=together",
+    "count": 21
+   },
+   {
+    "id": "wavespeed",
+    "label": "wavespeed",
+    "param": "inference_provider",
+    "url": "https://huggingface.co/models?inference_provider=wavespeed",
+    "count": 45830
+   },
+   {
+    "id": "zai-org",
+    "label": "zai-org",
+    "param": "inference_provider",
+    "url": "https://huggingface.co/models?inference_provider=zai-org",
+    "count": 21
+   }
+  ],
+  "other": [
+   {
+    "id": "base",
+    "label": "base",
+    "param": "other",
+    "url": "https://huggingface.co/models?other=base",
+    "count": 482,
+    "group": "model-type"
+   },
+   {
+    "id": "adapter",
+    "label": "adapter",
+    "param": "other",
+    "url": "https://huggingface.co/models?other=adapter",
+    "count": 951,
+    "group": "model-type"
+   },
+   {
+    "id": "finetune",
+    "label": "finetune",
+    "param": "other",
+    "url": "https://huggingface.co/models?other=finetune",
+    "count": 4216,
+    "group": "model-type"
+   },
+   {
+    "id": "quantized",
+    "label": "quantized",
+    "param": "other",
+    "url": "https://huggingface.co/models?other=quantized",
+    "count": 21940,
+    "group": "model-type"
+   },
+   {
+    "id": "merge",
+    "label": "merge",
+    "param": "other",
+    "url": "https://huggingface.co/models?other=merge",
+    "count": 45400,
+    "group": "model-type"
+   },
+   {
+    "id": "moe",
+    "label": "moe",
+    "param": "other",
+    "url": "https://huggingface.co/models?other=moe",
+    "count": 12086,
+    "group": "architecture"
+   },
+   {
+    "id": "4-bit",
+    "label": "4-bit",
+    "param": "other",
+    "url": "https://huggingface.co/models?other=4-bit",
+    "count": 52158,
+    "group": "precision"
+   },
+   {
+    "id": "8-bit",
+    "label": "8-bit",
+    "param": "other",
+    "url": "https://huggingface.co/models?other=8-bit",
+    "count": 37261,
+    "group": "precision"
+   },
+   {
+    "id": "custom_code",
+    "label": "custom_code",
+    "param": "other",
+    "url": "https://huggingface.co/models?other=custom_code",
+    "count": 59896,
+    "group": "misc"
+   },
+   {
+    "id": "eval-results",
+    "label": "eval-results",
+    "param": "other",
+    "url": "https://huggingface.co/models?other=eval-results",
+    "count": 2463,
+    "group": "misc"
+   },
+   {
+    "id": "co2_eq_emissions",
+    "label": "co2_eq_emissions",
+    "param": "other",
+    "url": "https://huggingface.co/models?other=co2_eq_emissions",
+    "count": 3130,
+    "group": "misc"
+   },
+   {
+    "id": "decision-model",
+    "label": "decision-model",
+    "param": "other",
+    "url": "https://huggingface.co/models?other=decision-model",
+    "count": 3444,
+    "group": "misc"
+   },
+   {
+    "id": "endpoints_compatible",
+    "label": "endpoints_compatible",
+    "param": "other",
+    "url": "https://huggingface.co/models?other=endpoints_compatible",
+    "count": 1076579,
+    "group": "deploy"
+   },
+   {
+    "id": "deploy:azure",
+    "label": "deploy:azure",
+    "param": "other",
+    "url": "https://huggingface.co/models?other=deploy:azure",
+    "count": 10791,
+    "group": "deploy"
+   },
+   {
+    "id": "deploy:sagemaker",
+    "label": "deploy:sagemaker",
+    "param": "other",
+    "url": "https://huggingface.co/models?other=deploy:sagemaker",
+    "count": 390,
+    "group": "deploy"
+   },
+   {
+    "id": "region:us",
+    "label": "region:us",
+    "param": "other",
+    "url": "https://huggingface.co/models?other=region:us",
+    "count": 3232388,
+    "group": "region"
+   },
+   {
+    "id": "region:eu",
+    "label": "region:eu",
+    "param": "other",
+    "url": "https://huggingface.co/models?other=region:eu",
+    "count": 3727,
+    "group": "region"
+   }
+  ]
+ },
+ "datasets_filters": {
+  "modality": [
+   {
+    "id": "modality:3d",
+    "label": "3D",
+    "param": "modality",
+    "url": "https://huggingface.co/datasets?modality=modality:3d",
+    "count": 2033
+   },
+   {
+    "id": "modality:audio",
+    "label": "Audio",
+    "param": "modality",
+    "url": "https://huggingface.co/datasets?modality=modality:audio",
+    "count": 38006
+   },
+   {
+    "id": "modality:document",
+    "label": "Document",
+    "param": "modality",
+    "url": "https://huggingface.co/datasets?modality=modality:document",
+    "count": 5353
+   },
+   {
+    "id": "modality:geospatial",
+    "label": "Geospatial",
+    "param": "modality",
+    "url": "https://huggingface.co/datasets?modality=modality:geospatial",
+    "count": 2262
+   },
+   {
+    "id": "modality:image",
+    "label": "Image",
+    "param": "modality",
+    "url": "https://huggingface.co/datasets?modality=modality:image",
+    "count": 103241
+   },
+   {
+    "id": "modality:tabular",
+    "label": "Tabular",
+    "param": "modality",
+    "url": "https://huggingface.co/datasets?modality=modality:tabular",
+    "count": 259913
+   },
+   {
+    "id": "modality:text",
+    "label": "Text",
+    "param": "modality",
+    "url": "https://huggingface.co/datasets?modality=modality:text",
+    "count": 615045
+   },
+   {
+    "id": "modality:timeseries",
+    "label": "Time-series",
+    "param": "modality",
+    "url": "https://huggingface.co/datasets?modality=modality:timeseries",
+    "count": 91439
+   },
+   {
+    "id": "modality:video",
+    "label": "Video",
+    "param": "modality",
+    "url": "https://huggingface.co/datasets?modality=modality:video",
+    "count": 105122
+   }
+  ],
+  "format": [
+   {
+    "id": "format:json",
+    "label": "json",
+    "param": "format",
+    "url": "https://huggingface.co/datasets?format=format:json",
+    "count": 101363
+   },
+   {
+    "id": "format:csv",
+    "label": "csv",
+    "param": "format",
+    "url": "https://huggingface.co/datasets?format=format:csv",
+    "count": 53546
+   },
+   {
+    "id": "format:parquet",
+    "label": "parquet",
+    "param": "format",
+    "url": "https://huggingface.co/datasets?format=format:parquet",
+    "count": 537474
+   },
+   {
+    "id": "format:optimized-parquet",
+    "label": "optimized-parquet",
+    "param": "format",
+    "url": "https://huggingface.co/datasets?format=format:optimized-parquet",
+    "count": null
+   },
+   {
+    "id": "format:agent-traces",
+    "label": "Traces",
+    "param": "format",
+    "url": "https://huggingface.co/datasets?format=format:agent-traces",
+    "count": null
+   },
+   {
+    "id": "format:imagefolder",
+    "label": "imagefolder",
+    "param": "format",
+    "url": "https://huggingface.co/datasets?format=format:imagefolder",
+    "count": null
+   },
+   {
+    "id": "format:audiofolder",
+    "label": "soundfolder",
+    "param": "format",
+    "url": "https://huggingface.co/datasets?format=format:audiofolder",
+    "count": null
+   },
+   {
+    "id": "format:webdataset",
+    "label": "webdataset",
+    "param": "format",
+    "url": "https://huggingface.co/datasets?format=format:webdataset",
+    "count": null
+   },
+   {
+    "id": "format:text",
+    "label": "text",
+    "param": "format",
+    "url": "https://huggingface.co/datasets?format=format:text",
+    "count": null
+   },
+   {
+    "id": "format:arrow",
+    "label": "arrow",
+    "param": "format",
+    "url": "https://huggingface.co/datasets?format=format:arrow",
+    "count": 2769
+   }
+  ],
+  "size_categories": [
+   {
+    "id": "size_categories:n<1K",
+    "label": "< 1K",
+    "param": "size_categories",
+    "url": "https://huggingface.co/datasets?size_categories=size_categories:n%3C1K",
+    "count": 309279
+   },
+   {
+    "id": "size_categories:1K<n<10K",
+    "label": "1K - 10K",
+    "param": "size_categories",
+    "url": "https://huggingface.co/datasets?size_categories=size_categories:1K%3Cn%3C10K",
+    "count": 208324
+   },
+   {
+    "id": "size_categories:10K<n<100K",
+    "label": "10K - 100K",
+    "param": "size_categories",
+    "url": "https://huggingface.co/datasets?size_categories=size_categories:10K%3Cn%3C100K",
+    "count": 178006
+   },
+   {
+    "id": "size_categories:100K<n<1M",
+    "label": "100K - 1M",
+    "param": "size_categories",
+    "url": "https://huggingface.co/datasets?size_categories=size_categories:100K%3Cn%3C1M",
+    "count": 76450
+   },
+   {
+    "id": "size_categories:1M<n<10M",
+    "label": "1M - 10M",
+    "param": "size_categories",
+    "url": "https://huggingface.co/datasets?size_categories=size_categories:1M%3Cn%3C10M",
+    "count": 27900
+   },
+   {
+    "id": "size_categories:10M<n<100M",
+    "label": "10M - 100M",
+    "param": "size_categories",
+    "url": "https://huggingface.co/datasets?size_categories=size_categories:10M%3Cn%3C100M",
+    "count": 9611
+   },
+   {
+    "id": "size_categories:100M<n<1B",
+    "label": "100M - 1B",
+    "param": "size_categories",
+    "url": "https://huggingface.co/datasets?size_categories=size_categories:100M%3Cn%3C1B",
+    "count": 3373
+   },
+   {
+    "id": "size_categories:1B<n<10B",
+    "label": "1B - 10B",
+    "param": "size_categories",
+    "url": "https://huggingface.co/datasets?size_categories=size_categories:1B%3Cn%3C10B",
+    "count": 1036
+   },
+   {
+    "id": "size_categories:10B<n<100B",
+    "label": "10B - 100B",
+    "param": "size_categories",
+    "url": "https://huggingface.co/datasets?size_categories=size_categories:10B%3Cn%3C100B",
+    "count": 357
+   },
+   {
+    "id": "size_categories:100B<n<1T",
+    "label": "100B - 1T",
+    "param": "size_categories",
+    "url": "https://huggingface.co/datasets?size_categories=size_categories:100B%3Cn%3C1T",
+    "count": 273
+   },
+   {
+    "id": "size_categories:n>1T",
+    "label": "> 1T",
+    "param": "size_categories",
+    "url": "https://huggingface.co/datasets?size_categories=size_categories:n%3E1T",
+    "count": 227
+   }
+  ],
+  "license": [
+   {
+    "id": "license:apache-2.0",
+    "label": "apache-2.0",
+    "param": "license",
+    "url": "https://huggingface.co/datasets?license=license:apache-2.0",
+    "count": 151928
+   },
+   {
+    "id": "license:mit",
+    "label": "mit",
+    "param": "license",
+    "url": "https://huggingface.co/datasets?license=license:mit",
+    "count": 74390
+   },
+   {
+    "id": "license:cc-by-4.0",
+    "label": "cc-by-4.0",
+    "param": "license",
+    "url": "https://huggingface.co/datasets?license=license:cc-by-4.0",
+    "count": 67568
+   },
+   {
+    "id": "license:other",
+    "label": "other",
+    "param": "license",
+    "url": "https://huggingface.co/datasets?license=license:other",
+    "count": 37382
+   },
+   {
+    "id": "license:cc-by-nc-4.0",
+    "label": "cc-by-nc-4.0",
+    "param": "license",
+    "url": "https://huggingface.co/datasets?license=license:cc-by-nc-4.0",
+    "count": 10454
+   },
+   {
+    "id": "license:cc-by-sa-4.0",
+    "label": "cc-by-sa-4.0",
+    "param": "license",
+    "url": "https://huggingface.co/datasets?license=license:cc-by-sa-4.0",
+    "count": 9648
+   },
+   {
+    "id": "license:openrail",
+    "label": "openrail",
+    "param": "license",
+    "url": "https://huggingface.co/datasets?license=license:openrail",
+    "count": 8408
+   },
+   {
+    "id": "license:cc0-1.0",
+    "label": "cc0-1.0",
+    "param": "license",
+    "url": "https://huggingface.co/datasets?license=license:cc0-1.0",
+    "count": 6718
+   },
+   {
+    "id": "license:cc-by-nc-sa-4.0",
+    "label": "cc-by-nc-sa-4.0",
+    "param": "license",
+    "url": "https://huggingface.co/datasets?license=license:cc-by-nc-sa-4.0",
+    "count": 5455
+   },
+   {
+    "id": "license:odbl",
+    "label": "odbl",
+    "param": "license",
+    "url": "https://huggingface.co/datasets?license=license:odbl",
+    "count": 2637
+   },
+   {
+    "id": "license:odc-by",
+    "label": "odc-by",
+    "param": "license",
+    "url": "https://huggingface.co/datasets?license=license:odc-by",
+    "count": 2375
+   },
+   {
+    "id": "license:cc",
+    "label": "cc",
+    "param": "license",
+    "url": "https://huggingface.co/datasets?license=license:cc",
+    "count": 1976
+   },
+   {
+    "id": "license:cc-by-nc-nd-4.0",
+    "label": "cc-by-nc-nd-4.0",
+    "param": "license",
+    "url": "https://huggingface.co/datasets?license=license:cc-by-nc-nd-4.0",
+    "count": 1789
+   },
+   {
+    "id": "license:cc-by-sa-3.0",
+    "label": "cc-by-sa-3.0",
+    "param": "license",
+    "url": "https://huggingface.co/datasets?license=license:cc-by-sa-3.0",
+    "count": 1625
+   },
+   {
+    "id": "license:afl-3.0",
+    "label": "afl-3.0",
+    "param": "license",
+    "url": "https://huggingface.co/datasets?license=license:afl-3.0",
+    "count": 1592
+   },
+   {
+    "id": "license:creativeml-openrail-m",
+    "label": "creativeml-openrail-m",
+    "param": "license",
+    "url": "https://huggingface.co/datasets?license=license:creativeml-openrail-m",
+    "count": 1496
+   },
+   {
+    "id": "license:gpl-3.0",
+    "label": "gpl-3.0",
+    "param": "license",
+    "url": "https://huggingface.co/datasets?license=license:gpl-3.0",
+    "count": 1425
+   },
+   {
+    "id": "license:gpl",
+    "label": "gpl",
+    "param": "license",
+    "url": "https://huggingface.co/datasets?license=license:gpl",
+    "count": 1331
+   },
+   {
+    "id": "license:bigscience-bloom-rail-1.0",
+    "label": "bigscience-bloom-rail-1.0",
+    "param": "license",
+    "url": "https://huggingface.co/datasets?license=license:bigscience-bloom-rail-1.0",
+    "count": 1056
+   },
+   {
+    "id": "license:bigscience-openrail-m",
+    "label": "bigscience-openrail-m",
+    "param": "license",
+    "url": "https://huggingface.co/datasets?license=license:bigscience-openrail-m",
+    "count": 1025
+   },
+   {
+    "id": "license:bigcode-openrail-m",
+    "label": "bigcode-openrail-m",
+    "param": "license",
+    "url": "https://huggingface.co/datasets?license=license:bigcode-openrail-m",
+    "count": 988
+   },
+   {
+    "id": "license:artistic-2.0",
+    "label": "artistic-2.0",
+    "param": "license",
+    "url": "https://huggingface.co/datasets?license=license:artistic-2.0",
+    "count": 850
+   },
+   {
+    "id": "license:bsd-3-clause",
+    "label": "bsd-3-clause",
+    "param": "license",
+    "url": "https://huggingface.co/datasets?license=license:bsd-3-clause",
+    "count": 838
+   },
+   {
+    "id": "license:agpl-3.0",
+    "label": "agpl-3.0",
+    "param": "license",
+    "url": "https://huggingface.co/datasets?license=license:agpl-3.0",
+    "count": 690
+   },
+   {
+    "id": "license:bsd-2-clause",
+    "label": "bsd-2-clause",
+    "param": "license",
+    "url": "https://huggingface.co/datasets?license=license:bsd-2-clause",
+    "count": 575
+   },
+   {
+    "id": "license:cc-by-3.0",
+    "label": "cc-by-3.0",
+    "param": "license",
+    "url": "https://huggingface.co/datasets?license=license:cc-by-3.0",
+    "count": 551
+   },
+   {
+    "id": "license:bsd",
+    "label": "bsd",
+    "param": "license",
+    "url": "https://huggingface.co/datasets?license=license:bsd",
+    "count": 480
+   },
+   {
+    "id": "license:cc-by-2.0",
+    "label": "cc-by-2.0",
+    "param": "license",
+    "url": "https://huggingface.co/datasets?license=license:cc-by-2.0",
+    "count": 444
+   },
+   {
+    "id": "license:unlicense",
+    "label": "unlicense",
+    "param": "license",
+    "url": "https://huggingface.co/datasets?license=license:unlicense",
+    "count": 410
+   },
+   {
+    "id": "license:bsl-1.0",
+    "label": "bsl-1.0",
+    "param": "license",
+    "url": "https://huggingface.co/datasets?license=license:bsl-1.0",
+    "count": 408
+   },
+   {
+    "id": "license:cdla-permissive-2.0",
+    "label": "cdla-permissive-2.0",
+    "param": "license",
+    "url": "https://huggingface.co/datasets?license=license:cdla-permissive-2.0",
+    "count": 404
+   },
+   {
+    "id": "license:wtfpl",
+    "label": "wtfpl",
+    "param": "license",
+    "url": "https://huggingface.co/datasets?license=license:wtfpl",
+    "count": 403
+   },
+   {
+    "id": "license:cc-by-nd-4.0",
+    "label": "cc-by-nd-4.0",
+    "param": "license",
+    "url": "https://huggingface.co/datasets?license=license:cc-by-nd-4.0",
+    "count": 376
+   },
+   {
+    "id": "license:llama2",
+    "label": "llama2",
+    "param": "license",
+    "url": "https://huggingface.co/datasets?license=license:llama2",
+    "count": 350
+   },
+   {
+    "id": "license:cc-by-nc-2.0",
+    "label": "cc-by-nc-2.0",
+    "param": "license",
+    "url": "https://huggingface.co/datasets?license=license:cc-by-nc-2.0",
+    "count": 305
+   },
+   {
+    "id": "license:c-uda",
+    "label": "c-uda",
+    "param": "license",
+    "url": "https://huggingface.co/datasets?license=license:c-uda",
+    "count": 287
+   },
+   {
+    "id": "license:cdla-sharing-1.0",
+    "label": "cdla-sharing-1.0",
+    "param": "license",
+    "url": "https://huggingface.co/datasets?license=license:cdla-sharing-1.0",
+    "count": 283
+   },
+   {
+    "id": "license:gfdl",
+    "label": "gfdl",
+    "param": "license",
+    "url": "https://huggingface.co/datasets?license=license:gfdl",
+    "count": 276
+   },
+   {
+    "id": "license:llama3.1",
+    "label": "llama3.1",
+    "param": "license",
+    "url": "https://huggingface.co/datasets?license=license:llama3.1",
+    "count": 274
+   },
+   {
+    "id": "license:cc-by-nc-sa-3.0",
+    "label": "cc-by-nc-sa-3.0",
+    "param": "license",
+    "url": "https://huggingface.co/datasets?license=license:cc-by-nc-sa-3.0",
+    "count": 273
+   },
+   {
+    "id": "license:llama3",
+    "label": "llama3",
+    "param": "license",
+    "url": "https://huggingface.co/datasets?license=license:llama3",
+    "count": 267
+   },
+   {
+    "id": "license:bsd-3-clause-clear",
+    "label": "bsd-3-clause-clear",
+    "param": "license",
+    "url": "https://huggingface.co/datasets?license=license:bsd-3-clause-clear",
+    "count": 216
+   },
+   {
+    "id": "license:cc-by-nc-3.0",
+    "label": "cc-by-nc-3.0",
+    "param": "license",
+    "url": "https://huggingface.co/datasets?license=license:cc-by-nc-3.0",
+    "count": 199
+   },
+   {
+    "id": "license:etalab-2.0",
+    "label": "etalab-2.0",
+    "param": "license",
+    "url": "https://huggingface.co/datasets?license=license:etalab-2.0",
+    "count": 189
+   },
+   {
+    "id": "license:pddl",
+    "label": "pddl",
+    "param": "license",
+    "url": "https://huggingface.co/datasets?license=license:pddl",
+    "count": 185
+   },
+   {
+    "id": "license:gemma",
+    "label": "gemma",
+    "param": "license",
+    "url": "https://huggingface.co/datasets?license=license:gemma",
+    "count": 179
+   },
+   {
+    "id": "license:gpl-2.0",
+    "label": "gpl-2.0",
+    "param": "license",
+    "url": "https://huggingface.co/datasets?license=license:gpl-2.0",
+    "count": 175
+   },
+   {
+    "id": "license:llama3.2",
+    "label": "llama3.2",
+    "param": "license",
+    "url": "https://huggingface.co/datasets?license=license:llama3.2",
+    "count": 171
+   },
+   {
+    "id": "license:cc-by-2.5",
+    "label": "cc-by-2.5",
+    "param": "license",
+    "url": "https://huggingface.co/datasets?license=license:cc-by-2.5",
+    "count": 151
+   },
+   {
+    "id": "license:lgpl-3.0",
+    "label": "lgpl-3.0",
+    "param": "license",
+    "url": "https://huggingface.co/datasets?license=license:lgpl-3.0",
+    "count": 150
+   },
+   {
+    "id": "license:openrail++",
+    "label": "openrail++",
+    "param": "license",
+    "url": "https://huggingface.co/datasets?license=license:openrail%2B%2B",
+    "count": 131
+   },
+   {
+    "id": "license:cc-by-nc-nd-3.0",
+    "label": "cc-by-nc-nd-3.0",
+    "param": "license",
+    "url": "https://huggingface.co/datasets?license=license:cc-by-nc-nd-3.0",
+    "count": 131
+   },
+   {
+    "id": "license:cc-by-nc-sa-2.0",
+    "label": "cc-by-nc-sa-2.0",
+    "param": "license",
+    "url": "https://huggingface.co/datasets?license=license:cc-by-nc-sa-2.0",
+    "count": 115
+   },
+   {
+    "id": "license:cdla-permissive-1.0",
+    "label": "cdla-permissive-1.0",
+    "param": "license",
+    "url": "https://huggingface.co/datasets?license=license:cdla-permissive-1.0",
+    "count": 107
+   },
+   {
+    "id": "license:llama3.3",
+    "label": "llama3.3",
+    "param": "license",
+    "url": "https://huggingface.co/datasets?license=license:llama3.3",
+    "count": 99
+   },
+   {
+    "id": "license:ecl-2.0",
+    "label": "ecl-2.0",
+    "param": "license",
+    "url": "https://huggingface.co/datasets?license=license:ecl-2.0",
+    "count": 93
+   },
+   {
+    "id": "license:mpl-2.0",
+    "label": "mpl-2.0",
+    "param": "license",
+    "url": "https://huggingface.co/datasets?license=license:mpl-2.0",
+    "count": 89
+   },
+   {
+    "id": "license:eupl-1.1",
+    "label": "eupl-1.1",
+    "param": "license",
+    "url": "https://huggingface.co/datasets?license=license:eupl-1.1",
+    "count": 68
+   },
+   {
+    "id": "license:fair-noncommercial-research-license",
+    "label": "fair-noncommercial-research-license",
+    "param": "license",
+    "url": "https://huggingface.co/datasets?license=license:fair-noncommercial-research-license",
+    "count": 62
+   },
+   {
+    "id": "license:ms-pl",
+    "label": "ms-pl",
+    "param": "license",
+    "url": "https://huggingface.co/datasets?license=license:ms-pl",
+    "count": 54
+   },
+   {
+    "id": "license:llama4",
+    "label": "llama4",
+    "param": "license",
+    "url": "https://huggingface.co/datasets?license=license:llama4",
+    "count": 54
+   },
+   {
+    "id": "license:h-research",
+    "label": "h-research",
+    "param": "license",
+    "url": "https://huggingface.co/datasets?license=license:h-research",
+    "count": 52
+   },
+   {
+    "id": "license:grok2-community",
+    "label": "grok2-community",
+    "param": "license",
+    "url": "https://huggingface.co/datasets?license=license:grok2-community",
+    "count": 52
+   },
+   {
+    "id": "license:eupl-1.2",
+    "label": "eupl-1.2",
+    "param": "license",
+    "url": "https://huggingface.co/datasets?license=license:eupl-1.2",
+    "count": 51
+   },
+   {
+    "id": "license:openmdw-1.1",
+    "label": "openmdw-1.1",
+    "param": "license",
+    "url": "https://huggingface.co/datasets?license=license:openmdw-1.1",
+    "count": 51
+   },
+   {
+    "id": "license:lgpl",
+    "label": "lgpl",
+    "param": "license",
+    "url": "https://huggingface.co/datasets?license=license:lgpl",
+    "count": 50
+   },
+   {
+    "id": "license:postgresql",
+    "label": "postgresql",
+    "param": "license",
+    "url": "https://huggingface.co/datasets?license=license:postgresql",
+    "count": 49
+   },
+   {
+    "id": "license:epl-1.0",
+    "label": "epl-1.0",
+    "param": "license",
+    "url": "https://huggingface.co/datasets?license=license:epl-1.0",
+    "count": 44
+   },
+   {
+    "id": "license:lgpl-2.1",
+    "label": "lgpl-2.1",
+    "param": "license",
+    "url": "https://huggingface.co/datasets?license=license:lgpl-2.1",
+    "count": 43
+   },
+   {
+    "id": "license:lppl-1.3c",
+    "label": "lppl-1.3c",
+    "param": "license",
+    "url": "https://huggingface.co/datasets?license=license:lppl-1.3c",
+    "count": 43
+   },
+   {
+    "id": "license:osl-3.0",
+    "label": "osl-3.0",
+    "param": "license",
+    "url": "https://huggingface.co/datasets?license=license:osl-3.0",
+    "count": 41
+   },
+   {
+    "id": "license:zlib",
+    "label": "zlib",
+    "param": "license",
+    "url": "https://huggingface.co/datasets?license=license:zlib",
+    "count": 38
+   },
+   {
+    "id": "license:isc",
+    "label": "isc",
+    "param": "license",
+    "url": "https://huggingface.co/datasets?license=license:isc",
+    "count": 36
+   },
+   {
+    "id": "license:epl-2.0",
+    "label": "epl-2.0",
+    "param": "license",
+    "url": "https://huggingface.co/datasets?license=license:epl-2.0",
+    "count": 32
+   },
+   {
+    "id": "license:deepfloyd-if-license",
+    "label": "deepfloyd-if-license",
+    "param": "license",
+    "url": "https://huggingface.co/datasets?license=license:deepfloyd-if-license",
+    "count": 31
+   },
+   {
+    "id": "license:openmdw-1.0",
+    "label": "openmdw-1.0",
+    "param": "license",
+    "url": "https://huggingface.co/datasets?license=license:openmdw-1.0",
+    "count": 31
+   },
+   {
+    "id": "license:lgpl-lr",
+    "label": "lgpl-lr",
+    "param": "license",
+    "url": "https://huggingface.co/datasets?license=license:lgpl-lr",
+    "count": 30
+   },
+   {
+    "id": "license:apple-amlr",
+    "label": "apple-amlr",
+    "param": "license",
+    "url": "https://huggingface.co/datasets?license=license:apple-amlr",
+    "count": 30
+   },
+   {
+    "id": "license:intel-research",
+    "label": "intel-research",
+    "param": "license",
+    "url": "https://huggingface.co/datasets?license=license:intel-research",
+    "count": 28
+   },
+   {
+    "id": "license:ncsa",
+    "label": "ncsa",
+    "param": "license",
+    "url": "https://huggingface.co/datasets?license=license:ncsa",
+    "count": 27
+   },
+   {
+    "id": "license:apple-ascl",
+    "label": "apple-ascl",
+    "param": "license",
+    "url": "https://huggingface.co/datasets?license=license:apple-ascl",
+    "count": 26
+   },
+   {
+    "id": "license:ofl-1.1",
+    "label": "ofl-1.1",
+    "param": "license",
+    "url": "https://huggingface.co/datasets?license=license:ofl-1.1",
+    "count": 23
+   }
+  ],
+  "library": [
+   {
+    "id": "library:datasets",
+    "label": "Datasets",
+    "param": "library",
+    "url": "https://huggingface.co/datasets?library=library:datasets",
+    "count": 785989
+   },
+   {
+    "id": "library:mlcroissant",
+    "label": "Croissant",
+    "param": "library",
+    "url": "https://huggingface.co/datasets?library=library:mlcroissant",
+    "count": 785952
+   },
+   {
+    "id": "library:polars",
+    "label": "Polars",
+    "param": "library",
+    "url": "https://huggingface.co/datasets?library=library:polars",
+    "count": 687193
+   },
+   {
+    "id": "library:pandas",
+    "label": "pandas",
+    "param": "library",
+    "url": "https://huggingface.co/datasets?library=library:pandas",
+    "count": 540107
+   },
+   {
+    "id": "library:dask",
+    "label": "Dask",
+    "param": "library",
+    "url": "https://huggingface.co/datasets?library=library:dask",
+    "count": 152414
+   },
+   {
+    "id": "library:lerobot",
+    "label": "lerobot",
+    "param": "library",
+    "url": "https://huggingface.co/datasets?library=library:lerobot",
+    "count": 31216
+   },
+   {
+    "id": "library:webdataset",
+    "label": "WebDataset",
+    "param": "library",
+    "url": "https://huggingface.co/datasets?library=library:webdataset",
+    "count": null
+   },
+   {
+    "id": "library:distilabel",
+    "label": "Distilabel",
+    "param": "library",
+    "url": "https://huggingface.co/datasets?library=library:distilabel",
+    "count": null
+   },
+   {
+    "id": "library:argilla",
+    "label": "Argilla",
+    "param": "library",
+    "url": "https://huggingface.co/datasets?library=library:argilla",
+    "count": null
+   },
+   {
+    "id": "library:fiftyone",
+    "label": "FiftyOne",
+    "param": "library",
+    "url": "https://huggingface.co/datasets?library=library:fiftyone",
+    "count": null
+   },
+   {
+    "id": "library:harbor",
+    "label": "Harbor",
+    "param": "library",
+    "url": "https://huggingface.co/datasets?library=library:harbor",
+    "count": null
+   },
+   {
+    "id": "library:datadesigner",
+    "label": "NeMo Data Designer",
+    "param": "library",
+    "url": "https://huggingface.co/datasets?library=library:datadesigner",
+    "count": null
+   },
+   {
+    "id": "library:lance",
+    "label": "Lance",
+    "param": "library",
+    "url": "https://huggingface.co/datasets?library=library:lance",
+    "count": 171
+   },
+   {
+    "id": "library:openenv",
+    "label": "OpenEnv",
+    "param": "library",
+    "url": "https://huggingface.co/datasets?library=library:openenv",
+    "count": 154
+   },
+   {
+    "id": "library:agentenv",
+    "label": "AgentEnv",
+    "param": "library",
+    "url": "https://huggingface.co/datasets?library=library:agentenv",
+    "count": 112
+   },
+   {
+    "id": "library:verifiers",
+    "label": "Verifiers",
+    "param": "library",
+    "url": "https://huggingface.co/datasets?library=library:verifiers",
+    "count": 55
+   },
+   {
+    "id": "library:nemo-gym",
+    "label": "NeMo Gym",
+    "param": "library",
+    "url": "https://huggingface.co/datasets?library=library:nemo-gym",
+    "count": 45
+   }
+  ],
+  "benchmark": [
+   {
+    "id": "benchmark:official",
+    "label": "Benchmark",
+    "param": "benchmark",
+    "url": "https://huggingface.co/datasets?benchmark=benchmark:official",
+    "count": 61
+   }
+  ],
+  "task_ids": [
+   {
+    "id": "task_ids:language-modeling",
+    "label": "language-modeling",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=task_ids:language-modeling",
+    "count": 1769
+   },
+   {
+    "id": "task_ids:multi-class-classification",
+    "label": "multi-class-classification",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=task_ids:multi-class-classification",
+    "count": 1464
+   },
+   {
+    "id": "task_ids:document-retrieval",
+    "label": "document-retrieval",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=task_ids:document-retrieval",
+    "count": 1129
+   },
+   {
+    "id": "task_ids:named-entity-recognition",
+    "label": "named-entity-recognition",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=task_ids:named-entity-recognition",
+    "count": 1061
+   },
+   {
+    "id": "task_ids:extractive-qa",
+    "label": "extractive-qa",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=task_ids:extractive-qa",
+    "count": 977
+   },
+   {
+    "id": "task_ids:multi-label-classification",
+    "label": "multi-label-classification",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=task_ids:multi-label-classification",
+    "count": 970
+   },
+   {
+    "id": "task_ids:topic-classification",
+    "label": "topic-classification",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=task_ids:topic-classification",
+    "count": 944
+   },
+   {
+    "id": "task_ids:sentiment-analysis",
+    "label": "sentiment-analysis",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=task_ids:sentiment-analysis",
+    "count": 819
+   },
+   {
+    "id": "task_ids:text-scoring",
+    "label": "text-scoring",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=task_ids:text-scoring",
+    "count": 797
+   },
+   {
+    "id": "task_ids:sentiment-classification",
+    "label": "sentiment-classification",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=task_ids:sentiment-classification",
+    "count": 717
+   },
+   {
+    "id": "task_ids:multiple-choice-qa",
+    "label": "multiple-choice-qa",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=task_ids:multiple-choice-qa",
+    "count": 686
+   },
+   {
+    "id": "task_ids:news-articles-summarization",
+    "label": "news-articles-summarization",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=task_ids:news-articles-summarization",
+    "count": 674
+   },
+   {
+    "id": "task_ids:open-domain-qa",
+    "label": "open-domain-qa",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=task_ids:open-domain-qa",
+    "count": 552
+   },
+   {
+    "id": "task_ids:natural-language-inference",
+    "label": "natural-language-inference",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=task_ids:natural-language-inference",
+    "count": 402
+   },
+   {
+    "id": "task_ids:masked-language-modeling",
+    "label": "masked-language-modeling",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=task_ids:masked-language-modeling",
+    "count": 400
+   },
+   {
+    "id": "task_ids:closed-domain-qa",
+    "label": "closed-domain-qa",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=task_ids:closed-domain-qa",
+    "count": 301
+   },
+   {
+    "id": "task_ids:multi-class-image-classification",
+    "label": "multi-class-image-classification",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=task_ids:multi-class-image-classification",
+    "count": 260
+   },
+   {
+    "id": "task_ids:hate-speech-detection",
+    "label": "hate-speech-detection",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=task_ids:hate-speech-detection",
+    "count": 227
+   },
+   {
+    "id": "task_ids:semantic-similarity-scoring",
+    "label": "semantic-similarity-scoring",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=task_ids:semantic-similarity-scoring",
+    "count": 210
+   },
+   {
+    "id": "task_ids:intent-classification",
+    "label": "intent-classification",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=task_ids:intent-classification",
+    "count": 190
+   },
+   {
+    "id": "task_ids:sentiment-scoring",
+    "label": "sentiment-scoring",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=task_ids:sentiment-scoring",
+    "count": 179
+   },
+   {
+    "id": "task_ids:semantic-segmentation",
+    "label": "semantic-segmentation",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=task_ids:semantic-segmentation",
+    "count": 152
+   },
+   {
+    "id": "task_ids:multivariate-time-series-forecasting",
+    "label": "multivariate-time-series-forecasting",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=task_ids:multivariate-time-series-forecasting",
+    "count": 142
+   },
+   {
+    "id": "task_ids:visual-question-answering",
+    "label": "visual-question-answering",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=task_ids:visual-question-answering",
+    "count": 140
+   },
+   {
+    "id": "task_ids:image-captioning",
+    "label": "image-captioning",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=task_ids:image-captioning",
+    "count": 138
+   },
+   {
+    "id": "task_ids:semantic-similarity-classification",
+    "label": "semantic-similarity-classification",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=task_ids:semantic-similarity-classification",
+    "count": 135
+   },
+   {
+    "id": "task_ids:dialogue-modeling",
+    "label": "dialogue-modeling",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=task_ids:dialogue-modeling",
+    "count": 131
+   },
+   {
+    "id": "task_ids:tabular-multi-class-classification",
+    "label": "tabular-multi-class-classification",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=task_ids:tabular-multi-class-classification",
+    "count": 132
+   },
+   {
+    "id": "task_ids:text2text-generation",
+    "label": "text2text-generation",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=task_ids:text2text-generation",
+    "count": 131
+   },
+   {
+    "id": "task_ids:fact-checking",
+    "label": "fact-checking",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=task_ids:fact-checking",
+    "count": 122
+   },
+   {
+    "id": "task_ids:univariate-time-series-forecasting",
+    "label": "univariate-time-series-forecasting",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=task_ids:univariate-time-series-forecasting",
+    "count": 121
+   },
+   {
+    "id": "task_ids:fact-checking-retrieval",
+    "label": "fact-checking-retrieval",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=task_ids:fact-checking-retrieval",
+    "count": 113
+   },
+   {
+    "id": "task_ids:dialogue-generation",
+    "label": "dialogue-generation",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=task_ids:dialogue-generation",
+    "count": 103
+   },
+   {
+    "id": "task_ids:acceptability-classification",
+    "label": "acceptability-classification",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=task_ids:acceptability-classification",
+    "count": 93
+   },
+   {
+    "id": "task_ids:part-of-speech",
+    "label": "part-of-speech",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=task_ids:part-of-speech",
+    "count": 92
+   },
+   {
+    "id": "task_ids:entity-linking-retrieval",
+    "label": "entity-linking-retrieval",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=task_ids:entity-linking-retrieval",
+    "count": 85
+   },
+   {
+    "id": "task_ids:parsing",
+    "label": "parsing",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=task_ids:parsing",
+    "count": 82
+   },
+   {
+    "id": "task_ids:instance-segmentation",
+    "label": "instance-segmentation",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=task_ids:instance-segmentation",
+    "count": 80
+   },
+   {
+    "id": "task_ids:open-book-qa",
+    "label": "open-book-qa",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=task_ids:open-book-qa",
+    "count": 79
+   },
+   {
+    "id": "task_ids:closed-book-qa",
+    "label": "closed-book-qa",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=task_ids:closed-book-qa",
+    "count": 77
+   },
+   {
+    "id": "task_ids:tabular-multi-label-classification",
+    "label": "tabular-multi-label-classification",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=task_ids:tabular-multi-label-classification",
+    "count": 68
+   },
+   {
+    "id": "task_ids:conversational",
+    "label": "conversational",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=task_ids:conversational",
+    "count": 66
+   },
+   {
+    "id": "task_ids:multi-input-text-classification",
+    "label": "multi-input-text-classification",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=task_ids:multi-input-text-classification",
+    "count": 66
+   },
+   {
+    "id": "task_ids:text-simplification",
+    "label": "text-simplification",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=task_ids:text-simplification",
+    "count": 59
+   },
+   {
+    "id": "task_ids:keyword-spotting",
+    "label": "keyword-spotting",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=task_ids:keyword-spotting",
+    "count": 54
+   },
+   {
+    "id": "task_ids:speaker-identification",
+    "label": "speaker-identification",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=task_ids:speaker-identification",
+    "count": 51
+   },
+   {
+    "id": "task_ids:explanation-generation",
+    "label": "explanation-generation",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=task_ids:explanation-generation",
+    "count": 49
+   },
+   {
+    "id": "task_ids:abstractive-qa",
+    "label": "abstractive-qa",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=task_ids:abstractive-qa",
+    "count": 47
+   },
+   {
+    "id": "task_ids:tabular-single-column-regression",
+    "label": "tabular-single-column-regression",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=task_ids:tabular-single-column-regression",
+    "count": 45
+   },
+   {
+    "id": "task_ids:multi-label-image-classification",
+    "label": "multi-label-image-classification",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=task_ids:multi-label-image-classification",
+    "count": 44
+   },
+   {
+    "id": "task_ids:document-question-answering",
+    "label": "document-question-answering",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=task_ids:document-question-answering",
+    "count": 42
+   },
+   {
+    "id": "task_ids:vehicle-detection",
+    "label": "vehicle-detection",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=task_ids:vehicle-detection",
+    "count": 32
+   },
+   {
+    "id": "task_ids:entity-linking-classification",
+    "label": "entity-linking-classification",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=task_ids:entity-linking-classification",
+    "count": 24
+   },
+   {
+    "id": "task_ids:task-planning",
+    "label": "task-planning",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=task_ids:task-planning",
+    "count": 24
+   },
+   {
+    "id": "task_ids:slot-filling",
+    "label": "slot-filling",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=task_ids:slot-filling",
+    "count": 22
+   },
+   {
+    "id": "task_ids:open-domain-abstractive-qa",
+    "label": "open-domain-abstractive-qa",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=task_ids:open-domain-abstractive-qa",
+    "count": 21
+   },
+   {
+    "id": "task_ids:audio-emotion-recognition",
+    "label": "audio-emotion-recognition",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=task_ids:audio-emotion-recognition",
+    "count": 21
+   },
+   {
+    "id": "task_ids:language-identification",
+    "label": "language-identification",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=task_ids:language-identification",
+    "count": 21
+   },
+   {
+    "id": "task_ids:lemmatization",
+    "label": "lemmatization",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=task_ids:lemmatization",
+    "count": 20
+   },
+   {
+    "id": "task_ids:word-sense-disambiguation",
+    "label": "word-sense-disambiguation",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=task_ids:word-sense-disambiguation",
+    "count": 17
+   },
+   {
+    "id": "task_ids:news-articles-headline-generation",
+    "label": "news-articles-headline-generation",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=task_ids:news-articles-headline-generation",
+    "count": 16
+   },
+   {
+    "id": "task_ids:coreference-resolution",
+    "label": "coreference-resolution",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=task_ids:coreference-resolution",
+    "count": 14
+   },
+   {
+    "id": "task_ids:utterance-retrieval",
+    "label": "utterance-retrieval",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=task_ids:utterance-retrieval",
+    "count": 14
+   },
+   {
+    "id": "task_ids:audio-language-identification",
+    "label": "audio-language-identification",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=task_ids:audio-language-identification",
+    "count": 14
+   },
+   {
+    "id": "task_ids:image-inpainting",
+    "label": "image-inpainting",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=task_ids:image-inpainting",
+    "count": 13
+   },
+   {
+    "id": "task_ids:face-detection",
+    "label": "face-detection",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=task_ids:face-detection",
+    "count": 11
+   },
+   {
+    "id": "task_ids:grasping",
+    "label": "grasping",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=task_ids:grasping",
+    "count": 10
+   },
+   {
+    "id": "task_ids:pose-estimation",
+    "label": "pose-estimation",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=task_ids:pose-estimation",
+    "count": 9
+   },
+   {
+    "id": "task_ids:rdf-to-text",
+    "label": "rdf-to-text",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=task_ids:rdf-to-text",
+    "count": 8
+   },
+   {
+    "id": "task_ids:multiple-choice-coreference-resolution",
+    "label": "multiple-choice-coreference-resolution",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=task_ids:multiple-choice-coreference-resolution",
+    "count": 8
+   },
+   {
+    "id": "task_ids:audio-intent-classification",
+    "label": "audio-intent-classification",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=task_ids:audio-intent-classification",
+    "count": 6
+   },
+   {
+    "id": "task_ids:panoptic-segmentation",
+    "label": "panoptic-segmentation",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=task_ids:panoptic-segmentation",
+    "count": 4
+   },
+   {
+    "id": "task_ids:super-resolution",
+    "label": "super-resolution",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=task_ids:super-resolution",
+    "count": 3
+   },
+   {
+    "id": "task_ids:image-colorization",
+    "label": "image-colorization",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=task_ids:image-colorization",
+    "count": 3
+   }
+  ],
+  "other": [
+   {
+    "id": "synthetic",
+    "label": "Synthetic",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=synthetic",
+    "count": 14628
+   },
+   {
+    "id": "art",
+    "label": "art",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=art",
+    "count": 9425
+   },
+   {
+    "id": "finance",
+    "label": "finance",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=finance",
+    "count": 4978
+   },
+   {
+    "id": "code",
+    "label": "code",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=code",
+    "count": 4958
+   },
+   {
+    "id": "medical",
+    "label": "medical",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=medical",
+    "count": 4716
+   },
+   {
+    "id": "legal",
+    "label": "legal",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=legal",
+    "count": 3890
+   },
+   {
+    "id": "biology",
+    "label": "biology",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=biology",
+    "count": 3299
+   },
+   {
+    "id": "chemistry",
+    "label": "chemistry",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=chemistry",
+    "count": 2303
+   },
+   {
+    "id": "agent",
+    "label": "agent",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=agent",
+    "count": 1635
+   },
+   {
+    "id": "climate",
+    "label": "climate",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=climate",
+    "count": 1564
+   },
+   {
+    "id": "music",
+    "label": "music",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=music",
+    "count": 1254
+   },
+   {
+    "id": "simready",
+    "label": "simready",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=simready",
+    "count": 148
+   },
+   {
+    "id": "rl-environment",
+    "label": "rl-environment",
+    "param": "other",
+    "url": "https://huggingface.co/datasets?other=rl-environment",
+    "count": 309
+   }
+  ]
+ },
+ "templates": [
+  {
+   "kind": "models",
+   "name": "finetunes-of",
+   "url": "https://huggingface.co/models?other=base_model:finetune:{repo}",
+   "example": "openai/whisper-large-v3",
+   "example_url": "https://huggingface.co/models?other=base_model:finetune:openai/whisper-large-v3",
+   "example_count": 1108
+  },
+  {
+   "kind": "models",
+   "name": "quantizations-of",
+   "url": "https://huggingface.co/models?other=base_model:quantized:{repo}",
+   "example": "Qwen/Qwen3-8B",
+   "example_url": "https://huggingface.co/models?other=base_model:quantized:Qwen/Qwen3-8B",
+   "example_count": 519
+  },
+  {
+   "kind": "models",
+   "name": "adapters-of",
+   "url": "https://huggingface.co/models?other=base_model:adapter:{repo}",
+   "example": "black-forest-labs/FLUX.1-dev",
+   "example_url": "https://huggingface.co/models?other=base_model:adapter:black-forest-labs/FLUX.1-dev",
+   "example_count": 42688
+  },
+  {
+   "kind": "models",
+   "name": "merges-of",
+   "url": "https://huggingface.co/models?other=base_model:merge:{repo}",
+   "example": "mistralai/Mistral-7B-v0.1",
+   "example_url": "https://huggingface.co/models?other=base_model:merge:mistralai/Mistral-7B-v0.1",
+   "example_count": 390
+  },
+  {
+   "kind": "models",
+   "name": "trained-on-dataset",
+   "url": "https://huggingface.co/models?dataset=dataset:{repo}",
+   "example": "mozilla-foundation/common_voice_17_0",
+   "example_url": "https://huggingface.co/models?dataset=dataset:mozilla-foundation/common_voice_17_0",
+   "example_count": 665
+  },
+  {
+   "kind": "models",
+   "name": "by-author",
+   "url": "https://huggingface.co/models?author={org}",
+   "example": "openai",
+   "example_url": "https://huggingface.co/models?author=openai",
+   "example_count": 39
+  },
+  {
+   "kind": "datasets",
+   "name": "by-author",
+   "url": "https://huggingface.co/datasets?author={org}",
+   "example": "mozilla-foundation",
+   "example_url": "https://huggingface.co/datasets?author=mozilla-foundation",
+   "example_count": 3
+  }
+ ],
+ "languages_file": "data/languages.json"
+}
